@@ -1,0 +1,1902 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/x-icon" href="data:image/png;base64,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>🛡️</text></svg>">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Production Manager 2026 - SAS CAILLE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%231e293b%22/><text x=%2250%%22 y=%2250%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%2260%22>⚡</text></svg>">
+
+<meta name="apple-mobile-web-app-title" content="Contrôle 2026">
+<meta name="mobile-web-app-capable" content="yes">
+    <style>
+        :root {
+            --primary: #0f172a; 
+            --accent: #2563eb;
+            --bg-app: #f8fafc;
+            --border: #e2e8f0;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --danger: #be123c;
+            --success-green: #16a34a;
+        }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--bg-app); 
+            margin: 0; padding: 0; color: var(--text-main);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        #SECTION_PLANNING, #SECTION_APPLICATION { display: none; }
+
+        /* --- HEADER PLANNING --- */
+        .header-main {
+            display: flex; justify-content: space-between; align-items: center; 
+            margin-bottom: 40px; border-bottom: 1px solid var(--border); padding-bottom: 20px;
+        }
+        .logo-wrapper { display: flex; align-items: center; gap: 12px; }
+        .logo-img {
+            width: 40px; height: 40px; background: var(--primary); border-radius: 8px;
+            display: flex; align-items: center; justify-content: center; color: white;
+        }
+
+        /* --- NAVIGATION TABS --- */
+        .nav-tabs { 
+            display: flex; background: var(--primary); padding: 0 20px; 
+            gap: 2px; position: sticky; top: 0; z-index: 100;
+            height: 60px; align-items: flex-end;
+        }
+        .tab-btn {
+            padding: 12px 24px; border: none; background: rgba(255,255,255,0.05);
+            color: #94a3b8; border-radius: 6px 6px 0 0; cursor: pointer; font-weight: 500; font-size: 13px;
+        }
+        .tab-btn.active { background: var(--bg-app); color: var(--accent); font-weight: 600; }
+
+        /* --- PLANNING GRID --- */
+        #SECTION_PLANNING { padding: 40px 20px; max-width: 1600px; margin: auto; }
+        .grid-mois { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; }
+        .mois-box { background: white; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+        .mois-titre { padding: 15px; font-weight: 800; font-size: 13px; border-bottom: 2px solid var(--primary); text-transform: uppercase; letter-spacing: 0.05em; }
+        .client-group { margin: 15px; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+        .client-header { background: #f1f5f9; padding: 10px 12px; font-size: 11px; font-weight: 800; color: var(--primary); text-transform: uppercase; border-bottom: 1px solid var(--border); }
+        .chantier-subgroup { padding: 5px 12px; border-bottom: 1px solid #f1f5f9; background: #ffffff; }
+        .chantier-title { font-size: 10px; font-weight: 700; color: var(--accent); text-transform: uppercase; padding: 8px 0 4px 0; }
+        .armoire-ligne { padding: 12px 0; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f8fafc; }
+        .armoire-info { cursor: pointer; flex-grow: 1; }
+        .armoire-label { display: block; font-size: 14px; font-weight: 600; color: var(--text-main); margin-bottom: 2px; }
+        .date-label { display: block; font-size: 11px; color: var(--text-muted); font-weight: 400; }
+        .btn-suppr { background: none; border: none; padding: 10px; color: var(--text-muted); cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; }
+        .btn-suppr svg { width: 18px; height: 18px; fill: currentColor; }
+        .btn-suppr:hover { color: var(--danger); }
+        .btn-main { padding: 14px 28px; background: var(--primary); color: white; border: none; border-radius: 6px; font-weight: 600; font-size: 13px; cursor: pointer; text-transform: uppercase; }
+
+        /* --- FICHE TECHNIQUE --- */
+        .page-content { display: none; padding: 20px; }
+        .page-content.active { display: block; }
+        .main-container { max-width: 900px; margin: 10px auto; background: white; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); display: flex; flex-direction: column; }
+        
+        .header-fiche { display: flex; align-items: center; padding: 15px 25px; background: white; border-bottom: 2px solid var(--accent); }
+        .title-container { flex: 1; text-align: right; }
+        .title-container h1 { margin: 0; font-size: 18px; font-weight: 800; text-transform: uppercase; }
+        .title-container p { margin: 2px 0 0; font-size: 11px; color: var(--accent); font-weight: 600; }
+
+        .identity-section { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 15px 25px; }
+        .info-card { background: #ffffff; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+        .card-label { background: #f8fafc; padding: 6px 12px; font-size: 10px; font-weight: 800; text-transform: uppercase; color: #64748b; border-bottom: 1px solid var(--border); }
+        .card-content { padding: 10px 12px; }
+        
+        .input-row { display: flex; margin-bottom: 5px; align-items: center; font-size: 12px; }
+        .field-name { width: 130px; font-weight: 600; color: #475569; font-size: 11px; }
+        .field-value { flex: 1; display: flex; align-items: center; gap: 4px; }
+        
+        .main-container input { width: 100%; border: 1px solid #cbd5e1; border-radius: 3px; padding: 4px 6px; font-family: inherit; font-size: 12px; color: var(--accent); font-weight: 600; background: #fcfcfc; outline: none; }
+
+        /* CONFIG TUILES */
+        .config-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 0 25px 15px 25px; }
+        .config-group { display: flex; flex-direction: column; gap: 8px; }
+        .config-title { font-size: 9px; font-weight: 800; text-transform: uppercase; color: #94a3b8; letter-spacing: 0.5px; }
+        .tile-container { display: flex; gap: 8px; flex-wrap: wrap; }
+        .tile { flex: 1; min-width: 80px; padding: 10px 5px; border: 2px solid var(--border); border-radius: 6px; text-align: center; cursor: pointer; transition: all 0.2s ease; user-select: none; background: #fdfdfd; display: flex; align-items: center; justify-content: center; }
+        .tile span { font-size: 10px; font-weight: 700; text-transform: uppercase; color: #64748b; }
+        .tile.active { border-color: var(--accent); background: #eff6ff; }
+        .tile.active span { color: var(--accent); }
+        .tile.active-multi { border-color: var(--success-green); background: #f0fdf4; }
+        .tile.active-multi span { color: var(--success-green); }
+
+        .info-cabinet-section { padding: 0 25px 15px 25px; }
+        .observation-section { padding: 0 25px 20px 25px; }
+        textarea { width: 100%; min-height: 120px; border: 1px solid #cbd5e1; border-radius: 4px; padding: 12px; font-family: inherit; font-size: 13px; color: var(--text-main); background: #fdfdfd; resize: none; outline: none; box-sizing: border-box; line-height: 1.5; }
+        .unit { font-size: 10px; color: #64748b; font-weight: bold; }
+		
+		/* --- STYLE DES BLOCS SIGNATURE --- */
+.p1-signature-grid {
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.p1-sig-card {
+    flex: 1; /* Les deux cartes prennent la même largeur */
+    background: #ffffff;
+    border: 1px solid #e2e8f0; /* Bordure gris subtil */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); /* Légère ombre portée */
+    overflow: hidden;
+}
+
+.p1-sig-header {
+    background: #1e293b; /* Bleu Nuit Profond (Professionnel) */
+    color: white;
+    padding: 12px 15px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 3px solid #0f172a;
+}
+
+.p1-sig-body {
+    padding: 20px;
+    background: #f8fafc; /* Fond très légèrement grisé */
+}
+
+.p1-sig-row {
+    margin-bottom: 15px;
+}
+
+.p1-sig-label {
+    display: block;
+    font-size: 11px;
+    color: #64748b; /* Gris texte moyen */
+    font-weight: 700;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+}
+
+/* --- LE DESIGN DES INPUTS (Champs à remplir) --- */
+.p1-sig-input {
+    width: 100%;
+    padding: 10px 12px; /* Espace intérieur confortable */
+    font-size: 14px;
+    color: #334155;
+    background-color: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px; /* Arrondi moderne */
+    outline: none;
+    transition: all 0.2s ease; /* Animation douce au clic */
+    box-sizing: border-box; /* Empêche le débordement */
+}
+
+/* Effet quand on clique dans la case */
+.p1-sig-input:focus {
+    border-color: #3b82f6; /* Bleu actif */
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1); /* Lueur bleue */
+    background-color: #ffffff;
+}
+
+/* Placeholder (texte fantôme) */
+.p1-sig-input::placeholder {
+    color: #94a3b8;
+    font-style: italic;
+}
+
+/* --- ZONE CANVAS --- */
+.p1-sig-canvas {
+    background: white;
+    border: 2px dashed #cbd5e1; /* Bordure pointillée "Zone de dépôt" */
+    border-radius: 6px;
+    cursor: crosshair;
+    width: 100%;
+    height: 120px;
+    transition: border-color 0.2s;
+}
+
+.p1-sig-canvas:hover {
+    border-color: #94a3b8;
+}
+
+/* Bouton effacer discret */
+.btn-clear-sig {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #e2e8f0;
+    color: #ef4444; /* Rouge discret */
+    font-size: 10px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-clear-sig:hover {
+    background: #fee2e2;
+    border-color: #fca5a5;
+}
+		
+		
+		@media print {
+    /* Cache le conteneur des boutons et tous les boutons eux-mêmes */
+    .btn-print, 
+    .tab-btn, 
+    button, 
+    .btn-clear-sig,
+    div[style*="display: flex"][style*="justify-content: flex-end"] {
+        display: none !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+    }
+
+    /* Cache également la navigation par onglets */
+    .nav-tabs, .tab-container {
+        display: none !important;
+    }
+
+    /* Supprime les marges de navigateur par défaut (date/heure en bas de page) */
+    @page {
+        margin: 1cm;
+    }
+}
+
+.p1-signature-grid {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.p1-sig-card {
+    flex: 1; /* Donne la même largeur aux deux blocs */
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 15px;
+}
+
+@media print {
+    .p1-signature-grid {
+        margin-top: 50px; /* Plus d'espace sur le PDF */
+    }
+}
+
+@media print {
+    /* 1. Configuration de la page A4 */
+    @page {
+        size: A4;
+        margin: 5mm; /* Marges fines pour gagner de la place */
+    }
+
+    body {
+        background: white;
+        -webkit-print-color-adjust: exact !important; /* FORCE L'IMPRESSION DES COULEURS DE FOND */
+        print-color-adjust: exact !important;
+    }
+
+    /* 2. On cache tout ce qui gêne */
+    .tab-btn, .btn-print, button, .nav-tabs, .btn-suppr, .btn-purger, .btn-clear-sig, .thumb-del {
+        display: none !important;
+    }
+
+    /* 3. On affiche toutes les pages l'une après l'autre */
+    .page-content {
+        display: block !important;
+        page-break-after: always; /* Force une nouvelle page après chaque section */
+        overflow: visible !important;
+        height: auto !important;
+    }
+    
+    /* Évite une page blanche à la fin si page 3 est la dernière */
+    #page3 { page-break-after: auto; }
+
+    /* 4. REPARATION DES CHECKBOXES (Le point critique) */
+    input[type="checkbox"] {
+        appearance: none;
+        -webkit-appearance: none;
+        width: 15px;
+        height: 15px;
+        border: 1px solid #000;
+        background: white;
+        display: inline-block;
+        position: relative;
+        vertical-align: middle;
+    }
+    
+    /* Quand c'est coché, on dessine une croix noire ou un fond */
+    input[type="checkbox"][checked], input[type="checkbox"]:checked {
+        background-color: #000 !important; /* Case noire quand cochée, très visible */
+        /* OU si tu préfères une croix, supprime le background et garde ça : */
+        /* background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="black"/></svg>') center/contain no-repeat; */
+    }
+
+    /* 5. REPARATION DES TEXTAREAS ET INPUTS */
+    textarea, input[type="text"], input[type="date"] {
+        border: none !important; /* Enlève les cadres moches */
+        border-bottom: 1px solid #ddd !important; /* Juste une ligne soulignée */
+        background: transparent !important;
+        resize: none;
+        overflow: hidden;
+        font-family: 'Segoe UI', sans-serif;
+        color: black !important;
+    }
+}
+
+/* Mode Application Tablette */
+body {
+    fixed: top 0;
+    overflow: hidden; /* Empêche le rebond sur iPad/Android */
+    background-color: #f8fafc;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+#SECTION_APPLICATION {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Prend toute la hauteur de l'écran */
+}
+
+/* Barre de navigation fixe en bas pour les pouces */
+.tab-container {
+    order: 2; /* Place la navigation en bas si tu préfères */
+    display: flex;
+    justify-content: space-around;
+    background: white;
+    padding: 10px;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+}
+
+.tab-button {
+    flex: 1;
+    margin: 0 5px;
+    padding: 15px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* Zone de contenu défilante */
+.tab-content {
+    flex: 1;
+    overflow-y: auto; /* Seul le contenu défile, pas les menus */
+    padding: 20px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.drive-management {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 20px 0;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    border: 1px solid #e2e8f0;
+}
+
+.drive-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.btn-export, .btn-import {
+    flex: 1;
+    padding: 15px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    font-size: 14px;
+}
+
+.btn-export { background-color: #3b82f6; color: white; }
+.btn-import { background-color: #10b981; color: white; }
+
+.last-save {
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+/* Optimisation pour les doigts sur tablette */
+input[type="radio"], input[type="checkbox"] {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.p3-obs-textarea {
+    font-size: 16px; /* Évite le zoom auto sur iPhone au clic */
+}
+    </style>
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<link rel="apple-touch-icon" href="mon-icone.png">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<body>
+
+<div id="SECTION_PLANNING">
+    <div class="header-main">
+        <div class="logo-wrapper">
+            <div class="logo-img">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+            </div>
+            <h1 style="font-weight: 800; font-size: 22px; letter-spacing: -0.02em; margin:0;">PRODUCTION ATELIER <span style="color:var(--accent)">2026</span></h1>
+        </div>
+        <button class="btn-main" onclick="creerFiche()">+ Nouvelle Fiche</button>
+    </div>
+    <div id="bloc-planning" class="grid-mois"></div>
+</div>
+
+<div id="SECTION_APPLICATION">
+    <div class="nav-tabs">
+        <button id="btn-tab1" class="tab-btn active" onclick="showTab('page1', this)">IDENTITÉ</button>
+        <button class="tab-btn" onclick="showTab('page2', this)">CONTRÔLES</button>
+        <button class="tab-btn" onclick="showTab('page3', this)">ESSAIS</button>
+        <div style="display: flex; justify-content: flex-end; align-items: center; gap: 10px; width: 100%; margin-bottom: 10px;">
+    
+    <button type="button" 
+            style="background: #15803d; color: white; height: 35px; font-size:11px; border: none; padding: 0 15px; cursor: pointer; font-family: 'Segoe UI', sans-serif; font-weight: bold; border-radius: 4px; display: flex; align-items: center; gap: 5px;" 
+            onclick="genererPDF()">
+        🖨️ GÉNÉRER PDF / IMPRIMER
+    </button>
+
+    <button class="tab-btn" 
+            style="background: #be123c; color: white; height: 35px; font-size:11px; font-weight: bold; border: none; padding: 0 15px; cursor: pointer; border-radius: 4px; margin: 0;" 
+            onclick="retourMenu()">
+        ENREGISTRER & QUITTER
+    </button>
+    
+</div>
+    </div>
+
+    <div id="page1" class="page-content active">
+        <div class="main-container">
+            <header class="header-fiche">
+                <div class="logo-container" style="width:150px;">
+                    <img src="Logo_SAS_CAILLE.png" alt="SAS CAILLE" style="max-width:100%; display:none;">
+                    <span style="font-weight:900; color:var(--primary); font-size:14px;">SAS CAILLE</span>
+                </div>
+                <div class="title-container">
+                    <h1>Contrôles & Essais</h1>
+                    <p>CONFORMITÉ ARMOIRES ÉLECTRIQUES</p>
+                </div>
+            </header>
+
+            <section class="identity-section">
+                <div class="info-card">
+                    <div class="card-label">Fabricant</div>
+                    <div class="card-content">
+                        <div class="input-row"><div class="field-name">Société</div><div class="field-value"><input type="text" id="emetteur_soc" value="SAS CAILLE"></div></div>
+                        <div class="input-row"><div class="field-name">Pays</div><div class="field-value"><input type="text" id="emetteur_pays_val" value="FRANCE"></div></div>
+                        <div class="input-row"><div class="field-name">Code Postal</div><div class="field-value"><input type="text" id="emetteur_cp" value="62159"></div></div>
+                        <div class="input-row"><div class="field-name">Ville</div><div class="field-value"><input type="text" id="emetteur_ville" value="Vaulx-Vraucourt"></div></div>
+                        <div class="input-row"><div class="field-name">Adresse</div><div class="field-value"><input type="text" id="emetteur_adr" value="6 route de Douai"></div></div>
+                        <div class="input-row"><div class="field-name">Téléphone</div><div class="field-value"><input type="text" id="emetteur_tel" value="03.21.50.62.08"></div></div>
+                    </div>
+                </div>
+
+                <div class="info-card" style="border-color: #bfdbfe;">
+                    <div class="card-label" style="background: #eff6ff; color: var(--accent);">Client</div>
+                    <div class="card-content">
+                        <div class="input-row"><div class="field-name">Société</div><div class="field-value"><input type="text" id="dest_soc" placeholder="Nom du client"></div></div>
+                        <div class="input-row"><div class="field-name">Chantier</div><div class="field-value"><input type="text" id="dest_chan" placeholder="Nom du chantier"></div></div>
+                        <div class="input-row"><div class="field-name">Pays</div><div class="field-value"><input type="text" id="dest_pays" placeholder="Pays du chantier"></div></div>
+                        <div class="input-row"><div class="field-name">Ville</div><div class="field-value"><input type="text" id="dest_ville" placeholder="Ville du chantier"></div></div>
+                        <div class="input-row"><div class="field-name">Code Postal</div><div class="field-value"><input type="text" id="dest_cp" placeholder="Code postal"></div></div>
+                        <div class="input-row"><div class="field-name">Adresse</div><div class="field-value"><input type="text" id="dest_adr" placeholder="Adresse du chantier"></div></div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="config-grid">
+                <div class="config-group">
+                    <div class="config-title">Type de matériel (Unique)</div>
+                    <div class="tile-container">
+                        <div class="tile" onclick="selectUnique(this, 'armoire')"><span>Armoire</span></div>
+                        <div class="tile" onclick="selectUnique(this, 'coffret')"><span>Coffret</span></div>
+                        <div class="tile" onclick="selectUnique(this, 'chassis')"><span>Châssis</span></div>
+                    </div>
+                </div>
+                <div class="config-group">
+                    <div class="config-title">Fonction (Multiple)</div>
+                    <div class="tile-container">
+                        <div class="tile" onclick="selectMulti(this, 'puissance')"><span>Puissance</span></div>
+                        <div class="tile" onclick="selectMulti(this, 'commande')"><span>Commande</span></div>
+                        <div class="tile" onclick="selectMulti(this, 'distribution')"><span>Distribution</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <section class="info-cabinet-section">
+                <div class="info-card" style="border-left: 4px solid var(--accent);">
+                    <div class="card-label">Informations Armoire</div>
+                    <div class="card-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0 30px;">
+                        <div>
+                            <div class="input-row"><div class="field-name">Nom de schéma</div><div class="field-value"><input type="text" id="nom_schema"></div></div>
+                            <div class="input-row"><div class="field-name">Indice schéma</div><div class="field-value"><input type="text" id="indice_schema"></div></div>
+                            <div class="input-row"><div class="field-name">Dessinateur</div><div class="field-value"><input type="text" id="dessinateur"></div></div>
+                            <div class="input-row"><div class="field-name">Référent</div><div class="field-value"><input type="text" id="referent"></div></div>
+                            <div class="input-row"><div class="field-name">Câbleur (s)</div><div class="field-value"><input type="text" id="cableurs"></div></div>
+                            <div class="input-row"><div class="field-name">Vérificateur</div><div class="field-value"><input type="text" id="verificateurs"></div></div>
+                        </div>
+                        <div>
+                            <div class="input-row"><div class="field-name">Livraison prévisionelle</div><div class="field-value"><input type="date" id="date_livraison"></div></div>
+                            <div class="input-row"><div class="field-name">Début Câblage</div><div class="field-value"><input type="date" id="date_debut"></div></div>
+                            <div class="input-row"><div class="field-name">Fin Câblage</div><div class="field-value"><input type="date" id="date_fin"></div></div>
+                            <div class="input-row"><div class="field-name">Vérification</div><div class="field-value"><input type="date" id="date_verif"></div></div>
+                            <div class="input-row"><div class="field-name">Taille (H/L/P)</div><div class="field-value">
+                                <input type="text" id="taille_h" placeholder="Hauteur" style="width: 65px;">
+                                <input type="text" id="taille_l" placeholder="Largeur" style="width: 65px;">
+                                <input type="text" id="taille_p" placeholder="Profondeur" style="width: 65px;">
+                                <span class="unit">mm</span>
+                            </div></div>
+                            <div class="input-row"><div class="field-name">Poids</div><div class="field-value"><input type="text" id="Poids" placeholder="0" style="width: 50px;"><span class="unit">Kg</span></div></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="observation-section">
+                <div class="info-card">
+                    <div class="card-label">OBSERVATIONS PRÉALABLES</div>
+                    <div class="card-content">
+                        <textarea id="obs_prealables" placeholder="Décrivez ici l'état général avant essais..."></textarea>
+                    </div>
+                </div>
+            </section>
+			
+			
+			
+        </div>
+    </div>
+    
+    <div id="page2" class="page-content">
+    <style>
+        .p2-main-container { max-width: 900px; margin: 10px auto; background: white; border-radius: 8px; border: 1px solid var(--border); padding-top: 10px; }
+        .p2-section-title { background: var(--primary); color: white; margin: 10px 25px; padding: 10px; font-size: 14px; font-weight: 800; text-transform: uppercase; border-radius: 4px; text-align: center; }
+        .p2-info-card { background: #ffffff; border: 1px solid var(--border); border-radius: 6px; margin: 0 25px 20px 25px; overflow: hidden; }
+        .p2-card-label { background: #f8fafc; padding: 8px 15px; font-size: 11px; font-weight: 800; text-transform: uppercase; color: #64748b; border-bottom: 1px solid var(--border); }
+        .p2-table { width: 100%; border-collapse: collapse; font-size: 11px; table-layout: fixed; }
+        .p2-table th { background: #f1f5f9; color: #475569; font-weight: 700; text-transform: uppercase; font-size: 9px; padding: 8px; border-bottom: 2px solid var(--border); }
+        .p2-table td { padding: 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
+        
+        .row-so td:first-child { color: #cbd5e1 !important; text-decoration: line-through; }
+        .row-nc { background-color: #fff1f2 !important; }
+        .row-nc td:first-child { color: var(--danger) !important; font-weight: bold; }
+        .row-corrected { background-color: #f0fdf4 !important; }
+        .row-corrected td:first-child { color: var(--success-green) !important; font-weight: bold; }
+
+        .p2-td-verif { visibility: hidden; width: 45px; text-align: center; border-left: 1px solid var(--border); }
+        .row-nc .p2-td-verif, .row-corrected .p2-td-verif { visibility: visible; }
+
+        .p2-obs-textarea { width: 100%; min-height: 24px; border: 1px solid #cbd5e1; border-radius: 3px; padding: 4px; font-size: 10px; font-family: inherit; background: white; resize: none; outline: none; box-sizing: border-box; }
+        .p2-category-row { background: #fdfdfd; font-weight: 700; color: var(--primary); font-size: 10px; text-transform: uppercase; }
+        .p2-sub-item { padding-left: 20px !important; font-style: italic; color: #64748b; }
+        .btn-camera-pro { background: #2563eb; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 10px; font-weight: 800; display: inline-flex; align-items: center; gap: 6px; }
+        #photo-preview-container { display: flex; gap: 10px; flex-wrap: wrap; padding: 10px; background: #f8fafc; min-height: 40px; }
+        .thumb-wrapper { position: relative; width: 80px; height: 80px; border: 1px solid #cbd5e1; border-radius: 4px; background: white; }
+        .thumb-img { width: 100%; height: 100%; object-fit: cover; border-radius: 3px; }
+        .thumb-del { position: absolute; top: -6px; right: -6px; background: var(--danger); color: white; width: 18px; height: 18px; border-radius: 50%; text-align: center; line-height: 16px; font-size: 12px; cursor: pointer; font-weight: bold; border: 1px solid white; }
+    </style>
+
+    <div class="p2-main-container">
+        <div class="p2-section-title">Procédure de contrôles</div>
+        <div class="p2-info-card">
+            <div class="p2-card-label">1. Contrôles hors tension (visuel et mécanique)</div>
+            <table class="p2-table">
+                <thead>
+                    <tr>
+                        <th style="width: 40%;">Points de contrôle</th>
+                        <th style="width: 30px;">C</th><th style="width: 30px;">NC</th><th style="width: 30px;">SO</th>
+                        <th style="width: 35%;">Observations</th>
+                        <th style="width: 45px; font-size: 8px;">Vérifié</th>
+                    </tr>
+                </thead>
+                <tbody id="control-body">
+
+                    <tr class="p2-category-row">
+                        <td colspan="6">Aspect général & Sécurité Normative</td>
+                    </tr>
+					<tr>
+                        <td class="p2-sub-item">Photos Intérieur / Extérieur</td>
+                        <td><input type="radio" name="0" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="0" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="0" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p2-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p2-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+                    <tr>
+                    <tr>
+                        <td class="p2-sub-item">Intérieur / Extérieur (Propreté, peinture)</td>
+                        <td><input type="radio" name="1" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="1" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="1" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p2-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p2-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+                    <tr>
+                        <td class="p2-sub-item">Triangle "Danger Électrique" (Face avant et plexi)</td>
+                        <td><input type="radio" name="2" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="2" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="2" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p2-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p2-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+                    <tr>
+                        <td class="p2-sub-item">Protection contacts directs (Plastrons / IP2X)</td>
+                        <td><input type="radio" name="3" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="3" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="3" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p2-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p2-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+                    <tr class="only-armoire only-coffret">
+                        <td class="p2-sub-item">Étanchéité entrées (Presse-étoupes / Bouchons)</td>
+                        <td><input type="radio" name="4" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="4" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="4" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p2-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p2-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+					<tr>
+                        <td class="p2-sub-item">Schémas mis à jour</td>
+                        <td><input type="radio" name="5" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="5" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="5" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p2-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p2-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+					<tr>
+                        <td class="p2-sub-item">Pochette de plan</td>
+                        <td><input type="radio" name="6" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="6" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="6" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p2-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p2-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+					<tr class="only-armoire only-coffret">
+                        <td class="p2-sub-item">Tablette de travail</td>
+                        <td><input type="radio" name="7" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="7" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="7" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p2-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p2-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+                    <tr class="only-armoire only-coffret">
+                        <td class="p2-sub-item">Présence de clé</td>
+                        <td><input type="radio" name="8" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="8" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="8" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p2-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p2-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+
+                    <tr class="p2-category-row">
+                        <td colspan="6">- Implantation (Respect du schéma & composants)</td>
+                    </tr>
+                    <tr>
+                        <td class="p2-sub-item">Appareillage intérieur (Calibres, types)</td>
+                        <td><input type="radio" name="9" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="9" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="9" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p2-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p2-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+                    <tr class="only-armoire only-coffret">
+                        <td class="p2-sub-item">Appareillage porte (Voyants, boutons)</td>
+                        <td><input type="radio" name="10" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="10" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="10" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p2-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p2-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+
+                    <tr class="p2-category-row">
+                        <td colspan="6">Vérification Mécanique <span class="dynamic-device-name"></span></td>
+                    </tr>
+                    <tr class="only-armoire">
+                        <td class="p2-sub-item">Anneaux de levage</td>
+                        <td><input type="radio" name="11" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="11" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="11" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p2-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p2-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+					<tr class="only-armoire">
+                        <td class="p2-sub-item">Panneaux latéraux</td>
+                        <td><input type="radio" name="12" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="12" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="12" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p2-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p2-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+                    <tr class="only-coffret">
+                        <td class="p2-sub-item">Pattes de fixation</td>
+                        <td><input type="radio" name="13" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="13" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="13" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p2-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p2-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+                    <tr class="p2-category-row">
+                        <td colspan="6">Liaison à la terre</td>
+                    </tr>
+                    <tr>
+                        <td class="p2-sub-item">Barre de terre</td>
+                        <td><input type="radio" name="14" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="14" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="14" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p2-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p2-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+					<tr>
+                        <td class="p2-sub-item">Bornes de terre</td>
+                        <td><input type="radio" name="15" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="15" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="15" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p2-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p2-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+                    <tr class="only-armoire only-coffret">
+                        <td class="p2-sub-item">Mise à la terre portes</td>
+                        <td><input type="radio" name="16" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="16" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="16" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p2-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p2-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+					<tr class="only-armoire only-coffret">
+                        <td class="p2-sub-item">Mise à la terre châssis</td>
+                        <td><input type="radio" name="17" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="17" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="17" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p2-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p2-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+
+                    <tr class="p2-category-row">
+                        <td colspan="6">Étiquetages & Identification</td>
+                    </tr>
+                    <tr>
+                        <td class="p2-sub-item">Orthographe & Repérage intérieur</td>
+                        <td><input type="radio" name="18" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="18" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="18" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p2-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p2-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+					<tr>
+                        <td class="p2-sub-item">Orthographe & Repérage extérieur</td>
+                        <td><input type="radio" name="19" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="19" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="19" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p2-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p2-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+					<tr>
+                        <td class="p2-sub-item">Étiquettes entreprise</td>
+                        <td><input type="radio" name="20" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="20" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="20" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p2-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p2-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+                    <tr>
+                        <td class="p2-sub-item">Plaque signalétique</td>
+                        <td><input type="radio" name="21" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="21" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="21" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p2-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p2-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+
+                    <tr class="p2-category-row">
+                        <td colspan="6">Contrôle de serrage</td>
+                    </tr>
+                    <tr class="only-puissance only-distribution">
+                        <td class="p2-sub-item">Jeu de barre</td>
+                        <td><input type="radio" name="22" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="22" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="22" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p2-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p2-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+					<tr class="only-puissance only-distribution">
+                        <td class="p2-sub-item">Répartiteur</td>
+                        <td><input type="radio" name="23" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="23" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="23" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p2-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p2-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+                    <tr>
+                        <td class="p2-sub-item">Appareillages</td>
+                        <td><input type="radio" name="24" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="24" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="24" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p2-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p2-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+                    <tr class="p2-category-row">
+                        <td colspan="6">- Nettoyage final</td>
+                    </tr>
+                    <tr>
+                        <td class="p2-sub-item">Aspiration & Nettoyage général</td>
+                        <td><input type="radio" name="25" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="25" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="25" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p2-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p2-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="page3" class="page-content">
+    <style>
+        .p3-main-container { max-width: 900px; margin: 10px auto; background: white; border-radius: 8px; border: 1px solid var(--border); padding-top: 10px; }
+        .p3-section-title { background: var(--primary); color: white; margin: 10px 25px; padding: 10px; font-size: 14px; font-weight: 800; text-transform: uppercase; border-radius: 4px; text-align: center; }
+        .p3-info-card { background: #ffffff; border: 1px solid var(--border); border-radius: 6px; margin: 0 25px 20px 25px; overflow: hidden; }
+        .p3-card-label { background: #f8fafc; padding: 8px 15px; font-size: 11px; font-weight: 800; text-transform: uppercase; color: #64748b; border-bottom: 1px solid var(--border); }
+        .p3-table { width: 100%; border-collapse: collapse; font-size: 11px; table-layout: fixed; }
+        .p3-table th { background: #f1f5f9; color: #475569; font-weight: 700; text-transform: uppercase; font-size: 9px; padding: 8px; border-bottom: 2px solid var(--border); }
+        .p3-table td { padding: 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
+        
+        .row-so td:first-child { color: #cbd5e1 !important; text-decoration: line-through; }
+        .row-nc { background-color: #fff1f2 !important; }
+        .row-nc td:first-child { color: var(--danger) !important; font-weight: bold; }
+        .row-corrected { background-color: #f0fdf4 !important; }
+        .row-corrected td:first-child { color: var(--success-green) !important; font-weight: bold; }
+
+        .p3-td-verif { visibility: hidden; width: 45px; text-align: center; border-left: 1px solid var(--border); }
+        .row-nc .p3-td-verif, .row-corrected .p3-td-verif { visibility: visible; }
+
+        .p3-obs-textarea { width: 100%; min-height: 24px; border: 1px solid #cbd5e1; border-radius: 3px; padding: 4px; font-size: 10px; font-family: inherit; background: white; resize: none; outline: none; box-sizing: border-box; }
+        .p3-category-row { background: #fdfdfd; font-weight: 700; color: var(--primary); font-size: 10px; text-transform: uppercase; }
+        .p3-sub-item { padding-left: 20px !important; font-style: italic; color: #64748b; }
+        .btn-camera-pro { background: #2563eb; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 10px; font-weight: 800; display: inline-flex; align-items: center; gap: 6px; }
+        #photo-preview-container { display: flex; gap: 10px; flex-wrap: wrap; padding: 10px; background: #f8fafc; min-height: 40px; }
+        .thumb-wrapper { position: relative; width: 80px; height: 80px; border: 1px solid #cbd5e1; border-radius: 4px; background: white; }
+        .thumb-img { width: 100%; height: 100%; object-fit: cover; border-radius: 3px; }
+        .thumb-del { position: absolute; top: -6px; right: -6px; background: var(--danger); color: white; width: 18px; height: 18px; border-radius: 50%; text-align: center; line-height: 16px; font-size: 12px; cursor: pointer; font-weight: bold; border: 1px solid white; }
+    </style>
+
+    <div class="p3-main-container">
+        <div class="p3-section-title">Procédure de contrôles</div>
+        <div class="p3-info-card">
+            <div class="p3-card-label">Essais et Mise en service</div>
+            <table class="p3-table">
+                <thead>
+                    <tr>
+                        <th style="width: 40%;">Points de contrôle</th>
+                        <th style="width: 30px;">C</th><th style="width: 30px;">NC</th><th style="width: 30px;">SO</th>
+                        <th style="width: 35%;">Observations</th>
+                        <th style="width: 45px; font-size: 8px;">Vérifié</th>
+                    </tr>
+                </thead>
+                <tbody id="control-body">
+                    <tr class="p3-category-row">
+                        <td colspan="6">Contrôle des tensions alternatives (VAC)</td>
+                    </tr>
+                    <tr class="only-puissance only-distribution">
+                        <td class="p3-sub-item">Réseau 400V AC</td>
+                        <td><input type="radio" name="26" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="26" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="26" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p3-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p3-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+					<tr class="only-puissance only-distribution">
+                        <td class="p3-sub-item">Réseau 230V AC</td>
+                        <td><input type="radio" name="27" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="27" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="27" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p3-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p3-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+					<tr class="only-puissance only-distribution">
+                        <td class="p3-sub-item">Réseau 230V AC Ondulée</td>
+                        <td><input type="radio" name="28" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="28" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="28" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p3-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p3-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+					<tr class="only-commande">
+                        <td class="p3-sub-item">Réseau 48V AC</td>
+                        <td><input type="radio" name="29" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="29" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="29" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p3-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p3-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+					<tr class="only-commande">
+                        <td class="p3-sub-item">Réseau 24V AC</td>
+                        <td><input type="radio" name="30" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="30" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="30" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p3-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p3-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+					
+					<tr class="p3-category-row only-commande">
+                        <td colspan="6">Contrôle des tensions continues (VDC)</td>
+                    </tr>
+                    <tr class="only-commande">
+                        <td class="p3-sub-item">Réseau 48V DC</td>
+                        <td><input type="radio" name="31" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="31" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="31" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p3-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p3-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+					<tr class="only-commande">
+                        <td class="p3-sub-item">Réseau 24V DC</td>
+                        <td><input type="radio" name="32" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="32" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="32" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p3-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p3-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+					<tr class="only-commande">
+                        <td class="p3-sub-item">Réseau 12V DC</td>
+                        <td><input type="radio" name="33" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="33" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="33" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p3-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p3-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+					<tr class="only-commande">
+                        <td class="p3-sub-item">Réseau 5V DC</td>
+                        <td><input type="radio" name="34" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="34" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="34" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p3-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p3-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+					
+					<tr class="p3-category-row only-puissance only-distribution">
+                        <td colspan="6">Protections</td>
+                    </tr>
+                    <tr class="only-puissance only-distribution">
+                        <td class="p3-sub-item">Essais des Différentiels (Test bouton)</td>
+                        <td><input type="radio" name="35" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="35" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="35" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p3-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p3-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+					<tr class="only-puissance only-distribution">
+                        <td class="p3-sub-item">Disjonction Disjoncteurs Moteurs  (Test bouton)</td>
+                        <td><input type="radio" name="36" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="36" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="36" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p3-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p3-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+					
+					<tr>
+                        <td colspan="6">Commandes Porte</td>
+                    </tr>
+                    <tr>
+                        <td class="p3-sub-item">Voyants</td>
+                        <td><input type="radio" name="37" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="37" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="37" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p3-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p3-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+					<tr>
+                        <td class="p3-sub-item">Commutateurs</td>
+                        <td><input type="radio" name="38" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="38" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="38" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p3-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p3-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+					<tr>
+                        <td class="p3-sub-item">Bouton poussoir</td>
+                        <td><input type="radio" name="40" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="40" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="40" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p3-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p3-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+					<tr class="only-commande">
+                        <td class="p3-sub-item">IHM</td>
+                        <td><input type="radio" name="41" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="41" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="41" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p3-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p3-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+					<tr>
+                        <td class="p3-sub-item">Prises 400V AC</td>
+                        <td><input type="radio" name="42" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="42" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="42" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p3-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p3-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+					<tr>
+                        <td class="p3-sub-item">Prises 230V AC</td>
+                        <td><input type="radio" name="43" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="43" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="43" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p3-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p3-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+					<tr class="only-commande">
+                        <td class="p3-sub-item">Prises RJ45</td>
+                        <td><input type="radio" name="44" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="44" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="44" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p3-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p3-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+					<tr class="only-commande">
+                        <td class="p3-sub-item">Prises USB</td>
+                        <td><input type="radio" name="45" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="45" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="45" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p3-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p3-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+					
+					<tr class="p3-category-row">
+                        <td colspan="6">Circuits internes</td>
+                    </tr>
+                    <tr>
+                        <td class="p3-sub-item">Éclairage</td>
+                        <td><input type="radio" name="46" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="46" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="46" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p3-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p3-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+					<tr>
+                        <td class="p3-sub-item">Ventilation / Extraction</td>
+                        <td><input type="radio" name="47" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="47" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="47" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p3-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p3-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+					
+					<tr class="p3-category-row only-commande">
+                        <td colspan="6">Circuits spécifiques</td>
+                    </tr>
+                    <tr class="only-commande">
+                        <td class="p3-sub-item">Circuit d’Arrêt d’Urgence (Chaîne de Sécurité)</td>
+                        <td><input type="radio" name="48" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="48" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="48" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p3-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p3-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+					<tr class="only-commande">
+                        <td class="p3-sub-item">Variateur</td>
+                        <td><input type="radio" name="49" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="49" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="49" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p3-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p3-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+					
+					<tr class="p3-category-row only-commande">
+                        <td colspan="6">Automate</td>
+                    </tr>
+                    <tr class="only-commande">
+                        <td class="p3-sub-item">Entrées TOR (Shunt + Voyant Carte)</</td>
+                        <td><input type="radio" name="50" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="50" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="50" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p3-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p3-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+					<tr class="only-commande">
+                        <td class="p3-sub-item">Sorties TOR (Shunt + Voyant Carte)</</td>
+                        <td><input type="radio" name="51" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="51" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="51" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p3-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p3-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+					
+					<tr class="only-commande">
+                        <td class="p3-sub-item">Entrées Analogiques</</td>
+                        <td><input type="radio" name="52" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="52" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="52" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p3-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p3-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+					
+					<tr class="only-commande">
+                        <td class="p3-sub-item">Sorties Analogiques</</td>
+                        <td><input type="radio" name="53" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="53" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="53" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p3-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p3-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+					
+					<tr class="p3-category-row">
+                        <td colspan="6">Mesures de Sécurité Normatives (CE / NF EN 61439)</td>
+                    </tr>
+                    <tr>
+                        <td class="p3-sub-item">Continuité des masses (PE)</td>
+                        <td><input type="radio" name="54" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="54" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="54" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p3-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p3-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+					<tr>
+                        <td class="p3-sub-item">Résistance d'isolement</td>
+                        <td><input type="radio" name="55" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="55" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="55" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p3-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p3-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+					<tr>
+                        <td class="p3-sub-item">Rigidité diélectrique</td>
+                        <td><input type="radio" name="56" onclick="updateRow(this, 'c')"></td>
+                        <td><input type="radio" name="56" onclick="updateRow(this, 'nc')"></td>
+                        <td><input type="radio" name="56" onclick="updateRow(this, 'so')"></td>
+                        <td><textarea class="p3-obs-textarea" oninput="autoExpand(this)"></textarea></td>
+                        <td class="p3-td-verif"><input type="checkbox" onclick="toggleVerify(this)"></td>
+                    </tr>
+					
+					
+                </tbody>
+            </table>
+			
+        </div>
+		
+		<section class="p1-signature-grid" style="margin-top: 30px;">
+   <section class="p1-signature-grid">
+    <div class="p1-sig-card">
+        <div class="p1-sig-header">
+            👤 Câbleur
+        </div>
+        <div class="p1-sig-body">
+            <div class="p1-sig-row">
+                <span class="p1-sig-label">Nom & Prénom</span>
+                <input type="text" id="sig_cableur_nom" class="p1-sig-input">
+            </div>
+            
+            <div class="p1-sig-row">
+                <span class="p1-sig-label">Date du contrôle</span>
+                <input type="date" id="sig_cableur_date" class="p1-sig-input">
+            </div>
+
+            <div class="p1-sig-row" style="margin-top: 20px;">
+                <span class="p1-sig-label">Signature</span>
+                <div style="position: relative;">
+                    <canvas id="canvas_sig_cableur" class="p1-sig-canvas" width="400" height="120"></canvas>
+                    <button type="button" class="btn-clear-sig" onclick="clearSignature('canvas_sig_cableur')">Effacer ↺</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="p1-sig-card">
+        <div class="p1-sig-header">
+            🛡️ Vérificateur
+        </div>
+        <div class="p1-sig-body">
+            <div class="p1-sig-row">
+                <span class="p1-sig-label">Nom & Prénom</span>
+                <input type="text" id="sig_verif_nom" class="p1-sig-input">
+            </div>
+
+            <div class="p1-sig-row">
+                <span class="p1-sig-label">Date de validation</span>
+                <input type="date" id="sig_verif_date" class="p1-sig-input">
+            </div>
+
+            <div class="p1-sig-row" style="margin-top: 20px;">
+                <span class="p1-sig-label">Signature</span>
+                <div style="position: relative;">
+                    <canvas id="canvas_sig_verif" class="p1-sig-canvas" width="400" height="120"></canvas>
+                    <button type="button" class="btn-clear-sig" onclick="clearSignature('canvas_sig_verif')">Effacer ↺</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</section>
+    </div>
+</div>
+	
+	
+
+    <script>
+    /* =========================================
+       1. GESTION DES PHOTOS (Rien ne change ici)
+       ========================================= */
+    let photoGallery = [];
+
+    function triggerCamera() { document.getElementById('cameraInput').click(); }
+
+   function handleFiles(files) {
+    const container = document.getElementById('photo-preview-container');
+    if (photoGallery.length === 0) container.innerHTML = "";
+    
+    Array.from(files).forEach(file => {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const img = new Image();
+            img.onload = function() {
+                // Création d'un canvas pour redimensionner
+                const canvas = document.createElement('canvas');
+                let width = img.width;
+                let height = img.height;
+                
+                // Limite à 1024px max (suffisant pour un PV)
+                const max_size = 1024;
+                if (width > height) {
+                    if (width > max_size) { height *= max_size / width; width = max_size; }
+                } else {
+                    if (height > max_size) { width *= max_size / height; height = max_size; }
+                }
+                
+                canvas.width = width;
+                canvas.height = height;
+                const ctx = canvas.getContext("2d");
+                ctx.drawImage(img, 0, 0, width, height);
+                
+                // Compression en JPEG qualité 0.7 (70%)
+                const compressedBase64 = canvas.toDataURL("image/jpeg", 0.7);
+                
+                // Ajout à la galerie
+                photoGallery.push(compressedBase64);
+                
+                const wrapper = document.createElement('div');
+                wrapper.className = 'thumb-wrapper';
+                wrapper.innerHTML = `<img src="${compressedBase64}" class="thumb-img"><div class="thumb-del" onclick="removePhoto(this, '${compressedBase64.substring(0,50)}')">×</div>`;
+                container.appendChild(wrapper);
+                updatePhotoValidation();
+            };
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    });
+}
+
+    function removePhoto(btn, partial) {
+        btn.parentElement.remove();
+        photoGallery = photoGallery.filter(img => !img.startsWith(partial));
+        if (photoGallery.length === 0) container.innerHTML = '<span style="color: #94a3b8; font-size: 10px; font-style: italic;">Aucune photo sélectionnée.</span>';
+        updatePhotoValidation();
+    }
+
+    function updatePhotoValidation() {
+    const row = document.getElementById('row-photo-logic');
+    const statusText = document.getElementById('photo-status-text');
+    const obs = document.getElementById('photo-obs');
+    
+    if (photoGallery.length > 0) {
+        row.classList.remove('row-nc'); 
+        row.classList.add('row-corrected');
+        statusText.innerText = "✅ " + photoGallery.length + " PHOTO(S) DANS LE DOSSIER";
+        obs.value = "Prêtes pour export PDF Photos.";
+    } else {
+        // On enlève row-nc pour ne plus marquer de défaut obligatoire
+        row.classList.remove('row-nc', 'row-corrected'); 
+        statusText.innerText = "ℹ️ AUCUNE PHOTO (OU DOSSIER PURGÉ)";
+        obs.value = "Les photos peuvent être supprimées après génération du PDF.";
+    }
+    syncToPage1();
+}
+
+    /* =========================================
+   2. LOGIQUE DE CONTRÔLE (NC/SO/CORRIGÉ) - PAGES 2 & 3
+   ========================================= */
+
+/**
+ * Gère le changement d'état d'une ligne (C, NC, SO)
+ */
+function updateRow(element, status, isLoading = false) {
+    const row = element.closest('tr');
+    const verifCheckbox = row.querySelector('.p2-td-verif input, .p3-td-verif input');
+    const textarea = row.querySelector('.p2-obs-textarea, .p3-obs-textarea');
+    
+    row.classList.remove('row-so', 'row-nc', 'row-corrected');
+    
+    // On ne décoche la vérif que si on n'est pas en train de charger la fiche
+    if(verifCheckbox && !isLoading) verifCheckbox.checked = false;
+
+    if (status === 'so') {
+        row.classList.add('row-so');
+    } else if (status === 'nc') {
+        row.classList.add('row-nc');
+        // On n'ajoute "Défaut :" que si on n'est pas en train de charger
+        if (!isLoading && textarea && !textarea.value.startsWith("Défaut :")) {
+            textarea.value = "Défaut : " + textarea.value;
+        }
+    }
+    syncToPage1();
+}
+
+function toggleVerify(checkbox, isLoading = false) {
+    const row = checkbox.closest('tr');
+    const textarea = row.querySelector('.p2-obs-textarea, .p3-obs-textarea');
+    
+    if (checkbox.checked) {
+        row.classList.remove('row-nc');
+        row.classList.add('row-corrected');
+        if(textarea) {
+            textarea.style.color = "#15803d"; 
+            // On n'ajoute la date que si c'est une action manuelle (pas au chargement)
+            if(!isLoading && !textarea.value.includes("(Corrigé le")) {
+                textarea.value += " (Corrigé le " + new Date().toLocaleDateString() + ")";
+            }
+        }
+    } else {
+        row.classList.remove('row-corrected');
+        if (row.querySelector('input[id$="_nc"]')?.checked) {
+            row.classList.add('row-nc');
+        }
+        if(textarea) textarea.style.color = "";
+    }
+    syncToPage1();
+}
+
+/**
+ * Synchronise tous les défauts des Pages 2 et 3 vers la Page 1
+ */
+function syncToPage1() {
+    let report = "";
+    // On sélectionne toutes les lignes de contrôle des deux pages
+    // On exclut les lignes de catégorie et les prévisualisations photo
+    const rows = document.querySelectorAll(`
+        #control-body tr:not(.p2-category-row):not(#row-photo-preview),
+        #page3 .p3-table tbody tr:not(.p3-category-row)
+    `);
+
+    rows.forEach(row => {
+        const pointCell = row.querySelector('td:first-child');
+        const textarea = row.querySelector('.p2-obs-textarea, .p3-obs-textarea');
+        
+        // Si la ligne est en NC ou Corrigée, on ajoute au rapport
+        if ((row.classList.contains('row-nc') || row.classList.contains('row-corrected')) && textarea && textarea.value.trim() !== "") {
+            // Nettoyage du texte du point de contrôle pour le rapport
+            let pointLabel = pointCell.innerText.replace(/- /g, '').replace(/\n/g, '').trim();
+            report += `• ${pointLabel}: ${textarea.value.trim()}\n`;
+        }
+    });
+
+    const p1Obs = document.getElementById('obs_prealables');
+    if (p1Obs) { 
+        p1Obs.value = report; 
+        // Ajustement automatique de la hauteur du champ en Page 1
+        p1Obs.style.height = 'auto';
+        p1Obs.style.height = p1Obs.scrollHeight + 'px'; 
+    }
+}
+
+/**
+ * Auto-expansion des textareas au fur et à mesure de la saisie
+ */
+function autoExpand(t) { 
+    t.style.height = 'inherit'; 
+    t.style.height = t.scrollHeight + 'px'; 
+    syncToPage1(); 
+}
+	
+    /* =========================================
+       3. SELECTION ARMOIRE/COFFRET ET FILTRES (CORRIGÉ)
+       ========================================= */
+    
+    // Fonction unique pour le choix Armoire/Coffret/Chassis
+    function selectUnique(element, type) {
+        // 1. Visuel bouton (Page 1)
+        const group = element.parentElement;
+        group.querySelectorAll('.tile').forEach(t => t.classList.remove('active'));
+        element.classList.add('active');
+
+        // 2. Sauvegarde mémoire
+        localStorage.setItem('selectedDeviceType', type);
+
+        // 3. Application de la logique
+        applyDeviceType(type);
+    }
+
+    // Fonction qui applique les changements (utilisée au clic ET au chargement)
+    function applyDeviceType(type) {
+        // Changement des textes dynamiques dans les titres
+        document.querySelectorAll('.dynamic-device-name').forEach(span => {
+            span.innerText = type; 
+        });
+
+        // Changement du titre Dossier Photo
+        const photoLabel = document.getElementById('photo-label');
+        if (photoLabel) photoLabel.innerText = "- Dossier photographique " + type;
+
+        // Filtrage des lignes du tableau
+        document.querySelectorAll('.only-armoire, .only-coffret, .only-chassis').forEach(r => r.style.display = 'none');
+        document.querySelectorAll('.only-' + type).forEach(r => r.style.display = 'table-row');
+    }
+
+    // Fonction unique pour Puissance/Commande/Distribution
+    function selectMulti(element, fonction) {
+        // 1. Visuel
+        element.classList.toggle('active');
+        
+        // 2. Sauvegarde mémoire
+        saveMultiState();
+
+        // 3. Application
+        applyFunctions();
+    }
+
+    function saveMultiState() {
+        const activeMultis = [];
+        // On suppose que tes boutons multi ont un attribut onclick contenant le type
+        document.querySelectorAll('.tile.active').forEach(tile => {
+            const onclickText = tile.getAttribute('onclick');
+            if(onclickText && onclickText.includes('selectMulti')) {
+                 // Petite astuce pour récupérer 'puissance' depuis "selectMulti(this, 'puissance')"
+                 const match = onclickText.match(/'([^']+)'/);
+                 if(match) activeMultis.push(match[1]);
+            }
+        });
+        localStorage.setItem('activeFunctions', JSON.stringify(activeMultis));
+    }
+
+    function applyFunctions() {
+        // D'abord on cache tout ce qui est spécifique
+        document.querySelectorAll('.only-puissance, .only-commande, .only-distribution').forEach(r => r.style.display = 'none');
+        
+        // On récupère ce qui doit être affiché depuis le stockage ou les boutons actifs
+        const activeMultis = JSON.parse(localStorage.getItem('activeFunctions') || '[]');
+        
+        activeMultis.forEach(f => {
+            document.querySelectorAll('.only-' + f).forEach(r => r.style.display = 'table-row');
+        });
+    }
+
+    /* =========================================
+       4. GESTION DU PLANNING ET FICHES
+       ========================================= */
+    let db = JSON.parse(localStorage.getItem('fiches_2026') || '[]');
+    let currentFicheId = null;
+
+    function chargerPlanning() {
+        document.getElementById('SECTION_PLANNING').style.display = 'block';
+        document.getElementById('SECTION_APPLICATION').style.display = 'none';
+        const zone = document.getElementById('bloc-planning');
+        zone.innerHTML = "";
+        const moisNom = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
+        
+        moisNom.forEach((m, i) => {
+            let container = document.createElement('div');
+            container.className = 'mois-box';
+            container.innerHTML = `<div class="mois-titre">${m}</div>`;
+            let fichesMois = db.filter(f => f.mois == i);
+
+            if(fichesMois.length === 0) {
+                container.innerHTML += `<p style="text-align:center; color:#94a3b8; font-size:11px; margin:30px 0;">VIDE</p>`;
+            } else {
+                const hierarchy = {};
+                fichesMois.forEach(f => {
+                    const client = f.client || "SANS CLIENT";
+                    const chantier = f.chantier || "SANS CHANTIER";
+                    if (!hierarchy[client]) hierarchy[client] = {};
+                    if (!hierarchy[client][chantier]) hierarchy[client][chantier] = [];
+                    hierarchy[client][chantier].push(f);
+                });
+
+                Object.keys(hierarchy).sort().forEach(clientName => {
+                    let clientDiv = document.createElement('div');
+                    clientDiv.className = 'client-group';
+                    clientDiv.innerHTML = `<div class="client-header">${clientName}</div>`;
+                    Object.keys(hierarchy[clientName]).sort().forEach(chantierName => {
+                        let chantierDiv = document.createElement('div');
+                        chantierDiv.className = 'chantier-subgroup';
+                        chantierDiv.innerHTML = `<div class="chantier-title">${chantierName}</div>`;
+                        hierarchy[clientName][chantierName].forEach(f => {
+                            let ligne = document.createElement('div');
+                            ligne.className = 'armoire-ligne';
+                            ligne.innerHTML = `
+                                <div class="armoire-info" onclick="ouvrirFiche(${f.id})">
+                                    <span class="armoire-label">${f.armoire || 'SANS NOM'}</span>
+                                    <span class="date-label">${new Date(f.id).toLocaleDateString('fr-FR')}</span>
+                                </div>
+                                <button class="btn-suppr" onclick="supprimerFiche(${f.id})">
+                                    <svg viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+                                </button>`;
+                            chantierDiv.appendChild(ligne);
+                        });
+                        clientDiv.appendChild(chantierDiv);
+                    });
+                    container.appendChild(clientDiv);
+                });
+            }
+            zone.appendChild(container);
+        });
+    }
+
+    function creerFiche() {
+        const id = Date.now();
+        db.push({ id: id, mois: new Date().getMonth(), client: "", chantier: "", armoire: "", of: "", obs: "", data: {} });
+        saveDB();
+        ouvrirFiche(id);
+    }
+
+   function ouvrirFiche(id) {
+    appliquerIdsAutomatiques();
+    currentFicheId = id;
+    let f = db.find(f => f.id === id);
+    if (!f) return; 
+
+    document.getElementById('SECTION_PLANNING').style.display = 'none';
+    document.getElementById('SECTION_APPLICATION').style.display = 'block';
+    
+    // --- 1. DISTRIBUTION DU TEXTE (CLIENT, CHANTIER, ARMOIRE) ---
+    // On remplit TOUS les champs qui ont ces classes sur n'importe quelle page
+    document.querySelectorAll('.info-client').forEach(el => el.value = f.client || "");
+    document.querySelectorAll('.info-chantier').forEach(el => el.value = f.chantier || "");
+    document.querySelectorAll('.info-armoire').forEach(el => el.value = f.armoire || "");
+    
+    // Champs uniques (Identité Page 1)
+    if(document.getElementById('dest_soc')) document.getElementById('dest_soc').value = f.client || "";
+    if(document.getElementById('dest_chan')) document.getElementById('dest_chan').value = f.chantier || "";
+    if(document.getElementById('nom_schema')) document.getElementById('nom_schema').value = f.armoire || "";
+    if(document.getElementById('obs_prealables')) document.getElementById('obs_prealables').value = f.obs || "";
+
+    // 2. Remplissage des signatures
+    document.getElementById('sig_cableur_nom').value = f.sig_cableur_nom || "";
+    document.getElementById('sig_cableur_date').value = f.sig_cableur_date || "";
+    document.getElementById('sig_verif_nom').value = f.sig_verif_nom || "";
+    document.getElementById('sig_verif_date').value = f.sig_verif_date || "";
+
+    // 3. Recharger les canvas
+    loadSignatureToCanvas("canvas_sig_cableur", f.sig_cableur_img);
+    loadSignatureToCanvas("canvas_sig_verif", f.sig_verif_img);
+
+    // --- 4. CHARGEMENT ET RESTAURATION VISUELLE DES TABLEAUX ---
+    const allInputs = document.querySelectorAll('input[type="checkbox"], input[type="radio"]');
+    allInputs.forEach(input => {
+        if (input.id) {
+            input.checked = f[input.id] === true; 
+            if (input.checked) {
+                if (input.type === "radio") {
+                    const status = input.id.split('_').pop(); 
+                    updateRow(input, status, true); 
+                }
+                if (input.type === "checkbox" && input.id.startsWith('v_')) {
+                    toggleVerify(input, true); 
+                }
+            }
+        }
+    });
+
+    // --- 5. CHARGEMENT DES OBSERVATIONS DU TABLEAU ---
+    const allTextareas = document.querySelectorAll('textarea.p3-obs-textarea, textarea.p2-obs-textarea');
+    allTextareas.forEach(txt => {
+        if (txt.id) {
+            txt.value = f[txt.id] || "";
+            if (typeof autoExpand === "function") autoExpand(txt);
+        }
+    });
+
+    showTab('page1', document.getElementById('btn-tab1'));
+}
+
+// Fonction utilitaire pour redessiner l'image enregistrée
+function loadSignatureToCanvas(canvasId, dataURL) {
+    const canvas = document.getElementById(canvasId);
+    const ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (dataURL && dataURL.length > 100) { // Vérifie que c'est une vraie image
+        const img = new Image();
+        img.onload = function() { ctx.drawImage(img, 0, 0); };
+        img.src = dataURL;
+    }
+}
+
+    function retourMenu() {
+    appliquerIdsAutomatiques();
+    let idx = db.findIndex(f => f.id === currentFicheId);
+    
+    if(idx !== -1) {
+        // --- SAUVEGARDE DES INFOS REPETEES (CLASSE) ---
+        // On prend la valeur du premier champ client qu'on trouve
+        const clientVal = document.querySelector('.info-client')?.value;
+        const chantierVal = document.querySelector('.info-chantier')?.value;
+        const armoireVal = document.querySelector('.info-armoire')?.value;
+
+        if(clientVal !== undefined) db[idx].client = clientVal;
+        if(chantierVal !== undefined) db[idx].chantier = chantierVal;
+        if(armoireVal !== undefined) db[idx].armoire = armoireVal;
+        
+        // Observations préalables et signatures (par ID unique)
+        db[idx].obs = document.getElementById('obs_prealables')?.value || "";
+        db[idx].sig_cableur_nom = document.getElementById('sig_cableur_nom').value;
+        db[idx].sig_cableur_date = document.getElementById('sig_cableur_date').value;
+        db[idx].sig_verif_nom = document.getElementById('sig_verif_nom').value;
+        db[idx].sig_verif_date = document.getElementById('sig_verif_date').value;
+
+        // --- SAUVEGARDE DE TOUT LE RESTE (IDS UNIQUES) ---
+        const allTexts = document.querySelectorAll('input[type="text"], textarea, input[type="date"]');
+        allTexts.forEach(el => {
+            if(el.id) db[idx][el.id] = el.value;
+        });
+
+        const allChecks = document.querySelectorAll('input[type="radio"], input[type="checkbox"]');
+        allChecks.forEach(el => {
+            if(el.id) db[idx][el.id] = el.checked;
+        });
+
+        // Sauvegarde des signatures (Canvas)
+        db[idx].sig_cableur_img = document.getElementById('canvas_sig_cableur').toDataURL();
+        db[idx].sig_verif_img = document.getElementById('canvas_sig_verif').toDataURL();
+
+        saveDB(); 
+    }
+    
+    document.getElementById('SECTION_APPLICATION').style.display = 'none';
+    document.getElementById('SECTION_PLANNING').style.display = 'block';
+    chargerPlanning(); 
+}
+
+    function supprimerFiche(id) {
+        if(confirm("Supprimer cette fiche ?")) {
+            db = db.filter(f => f.id !== id);
+            saveDB();
+            chargerPlanning();
+        }
+    }
+
+    function saveDB() { localStorage.setItem('fiches_2026', JSON.stringify(db)); }
+
+    function showTab(tabId, btn) {
+        document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        btn.classList.add('active');
+    }
+
+    /* =========================================
+       5. INITIALISATION (ONLOAD)
+       ========================================= */
+    window.onload = function() {
+        // 1. Charge le planning
+        chargerPlanning();
+
+        // 2. Restaure les boutons de configuration (même si cachés au début)
+        const savedType = localStorage.getItem('selectedDeviceType');
+        if (savedType) {
+            const btn = document.querySelector(`[onclick*="selectUnique"][onclick*="'${savedType}'"]`);
+            if (btn) btn.classList.add('active');
+            applyDeviceType(savedType);
+        }
+
+        const savedFunctions = JSON.parse(localStorage.getItem('activeFunctions') || '[]');
+        savedFunctions.forEach(f => {
+            const btn = document.querySelector(`[onclick*="selectMulti"][onclick*="'${f}'"]`);
+            if (btn) btn.classList.add('active');
+        });
+        applyFunctions();
+    };
+	
+	document.addEventListener("DOMContentLoaded", function() {
+    initSignatureCanvas("canvas_sig_cableur");
+    initSignatureCanvas("canvas_sig_verif");
+    
+    // Charger les signatures existantes après un court délai 
+    // pour s'assurer que les canvas sont prêts
+    setTimeout(() => {
+        loadSignature("canvas_sig_cableur");
+        loadSignature("canvas_sig_verif");
+    }, 100);
+});
+
+function initSignatureCanvas(canvasId) {
+    const canvas = document.getElementById(canvasId);
+    const ctx = canvas.getContext("2d");
+    let drawing = false;
+
+    ctx.strokeStyle = "#0f172a";
+    ctx.lineWidth = 2;
+    ctx.lineCap = "round";
+
+    // Gestion du dessin (identique à la version précédente)
+    function getPos(e) {
+        const rect = canvas.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        return { x: clientX - rect.left, y: clientY - rect.top };
+    }
+
+    const start = (e) => { drawing = true; const pos = getPos(e); ctx.beginPath(); ctx.moveTo(pos.x, pos.y); };
+    const move = (e) => { if (!drawing) return; const pos = getPos(e); ctx.lineTo(pos.x, pos.y); ctx.stroke(); };
+    const stop = () => { 
+        if (drawing) { 
+            drawing = false; 
+            saveSignature(canvasId); // Sauvegarde à chaque levée de doigt/souris
+        } 
+    };
+
+    canvas.addEventListener("mousedown", start);
+    window.addEventListener("mousemove", move);
+    window.addEventListener("mouseup", stop);
+    canvas.addEventListener("touchstart", (e) => { e.preventDefault(); start(e); }, { passive: false });
+    canvas.addEventListener("touchmove", (e) => { e.preventDefault(); move(e); }, { passive: false });
+    canvas.addEventListener("touchend", stop);
+}
+
+// SAUVEGARDE : Convertit le dessin en texte et le stocke
+function saveSignature(canvasId) {
+    // Cette fonction peut rester vide ou servir à mettre un indicateur "Modifié"
+    // La vraie sauvegarde se fait maintenant dans retourMenu()
+}
+
+// CHARGEMENT : Récupère le texte et le redessine sur le canvas
+function loadSignature(canvasId) {
+    const canvas = document.getElementById(canvasId);
+    const ctx = canvas.getContext("2d");
+    const dataURL = localStorage.getItem('saved_sig_' + canvasId);
+    
+    if (dataURL) {
+        const img = new Image();
+        img.onload = function() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(img, 0, 0);
+        };
+        img.src = dataURL;
+    }
+}
+
+// EFFACER : Vide le canvas et supprime la sauvegarde
+function clearSignature(canvasId) {
+    const canvas = document.getElementById(canvasId);
+    const ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    let idx = db.findIndex(f => f.id === currentFicheId);
+    if(idx !== -1) {
+        if(canvasId === "canvas_sig_cableur") db[idx].sig_cableur_img = "";
+        else db[idx].sig_verif_img = "";
+    }
+}
+
+function genererPDF() {
+    // 1. Sauvegarde de sécurité
+    let idx = db.findIndex(f => f.id === currentFicheId);
+    if (idx !== -1) {
+        db[idx].sig_cableur_img = document.getElementById('canvas_sig_cableur').toDataURL();
+        db[idx].sig_verif_img = document.getElementById('canvas_sig_verif').toDataURL();
+        saveDB();
+    }
+
+    // 2. Préparation pour l'impression (figer les valeurs)
+    document.querySelectorAll('input[type="text"], input[type="date"], textarea').forEach(el => {
+        if (el.tagName === 'TEXTAREA') el.innerHTML = el.value;
+        el.setAttribute('value', el.value);
+    });
+
+    document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+        if (cb.checked) cb.setAttribute('checked', 'checked');
+        else cb.removeAttribute('checked');
+    });
+
+    // 3. Affichage de toutes les pages
+    const pages = document.querySelectorAll('.page-content');
+    pages.forEach(p => p.style.display = 'block');
+
+    // 4. Lancement de l'impression native
+    setTimeout(() => {
+        window.print();
+
+        // 5. Retour à la normale sans demande de purge
+        setTimeout(() => {
+            showTab('page3', document.getElementById('btn-tab3')); // On reste sur les signatures
+            alert("Rapport PDF prêt !");
+        }, 500);
+    }, 200);
+}
+
+function purgerPhotosApresPDF() {
+    let idx = db.findIndex(f => f.id === currentFicheId);
+    if (idx !== -1) {
+        db[idx].photos = []; // Vide les photos dans la base
+        saveDB();
+        
+        // Vide la galerie visuelle
+        photoGallery = [];
+        const container = document.getElementById('photo-preview-container');
+        if (container) container.innerHTML = '<span style="color: #15803d; font-size: 10px; font-style: italic;">Photos purgées (Espace libéré).</span>';
+        
+        updatePhotoValidation();
+        alert("Espace mémoire libéré.");
+    }
+}
+
+function appliquerIdsAutomatiques() {
+    const rows = document.querySelectorAll('tr');
+    rows.forEach(row => {
+        const radios = row.querySelectorAll('input[type="radio"]');
+        if (radios.length === 3) {
+            const groupe = radios[0].getAttribute('name');
+            radios[0].id = "r_" + groupe + "_c";
+            radios[1].id = "r_" + groupe + "_nc";
+            radios[2].id = "r_" + groupe + "_so";
+            
+            // On donne un ID à la cellule (TD) pour pouvoir la colorer
+            row.id = "row_" + groupe; 
+        }
+        const txt = row.querySelector('textarea');
+        if (txt) {
+            const groupe = row.querySelector('input[type="radio"]')?.getAttribute('name');
+            txt.id = "obs_" + groupe;
+        }
+        const vchk = row.querySelector('input[type="checkbox"]');
+        if (vchk) {
+            const groupe = row.querySelector('input[type="radio"]')?.getAttribute('name');
+            vchk.id = "v_" + groupe;
+        }
+    });
+}
+// Cette fonction lie les champs qui portent le même nom sur différentes pages
+function syncInfos() {
+    const clients = document.querySelectorAll('.input-client'); // Ajoute cette classe à tes inputs
+    const chantiers = document.querySelectorAll('.input-chantier');
+    
+    // Si tu changes le client sur la page 1, ça le change sur la page 3
+    clients.forEach(el => el.oninput = (e) => {
+        clients.forEach(input => input.value = e.target.value);
+    });
+}
+
+function sauvegarderVersDrive() {
+    const dataStr = JSON.stringify(db);
+    const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+    
+    const exportFileDefaultName = 'SAVE_PLANNING_2026.json';
+    
+    let linkElement = document.createElement('a');
+    linkElement.setAttribute('href', dataUri);
+    linkElement.setAttribute('download', exportFileDefaultName);
+    linkElement.click();
+}
+
+function importerDepuisDrive(event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        try {
+            const importedDB = JSON.parse(e.target.result);
+            db = importedDB;
+            saveDB(); // Enregistre dans la tablette
+            chargerPlanning(); // Rafraîchit l'affichage
+            alert("Synchronisation Drive réussie !");
+        } catch (err) {
+            alert("Erreur : Le fichier n'est pas valide.");
+        }
+    };
+    reader.readAsText(file);
+}
+
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').then(reg => {
+            console.log('App prête pour le mode hors-ligne.');
+        });
+    });
+}
+</script>
+</body>
+</html>
