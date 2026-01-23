@@ -411,6 +411,431 @@ input[type="radio"], input[type="checkbox"] {
 .p3-obs-textarea {
     font-size: 16px; /* Évite le zoom auto sur iPhone au clic */
 }
+
+@media print {
+    /* Cache les boutons et la navigation */
+    .btn-retour, .btn-save, .nav-tabs, .btn-suppr, .no-print, header, .sidebar {
+        display: none !important;
+    }
+
+    /* Débloque la hauteur du document */
+    html, body {
+        height: auto !important;
+        overflow: visible !important;
+        background-color: white !important;
+    }
+
+    /* Force chaque page de ta fiche à commencer sur une nouvelle page PDF */
+    .page-content, .page-fiche {
+        display: block !important;
+        page-break-after: always !important; /* Saut de page */
+        border: none !important;
+        box-shadow: none !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Supprime les scrollbars des textarea et conteneurs */
+    textarea {
+        overflow: hidden !important;
+        resize: none !important;
+        border: 1px solid #ccc !important;
+    }
+
+    #SECTION_APPLICATION {
+        display: block !important;
+        position: static !important;
+        overflow: visible !important;
+    }
+}
+
+/* --- OPTIMISATION A4 PAGE 1 --- */
+
+/* 1. On resserre l'en-tête et les sections */
+#page1 .main-container {
+    margin: 0 auto !important;
+    padding-bottom: 10px !important;
+}
+
+#page1 .header-fiche {
+    padding: 10px 25px !important; /* Réduction hauteur header */
+}
+
+#page1 .identity-section {
+    padding: 10px 25px !important;
+    gap: 10px !important;
+}
+
+/* 2. On rend les lignes de saisie plus compactes */
+#page1 .input-row {
+    margin-bottom: 2px !important;
+}
+
+#page1 .card-content {
+    padding: 5px 12px !important;
+}
+
+#page1 .config-grid {
+    padding: 0 25px 10px 25px !important;
+    gap: 10px !important;
+}
+
+/* 3. Zone Observation réduite (elle s'agrandira si tu écris bcp) */
+#page1 #obs_prealables {
+    min-height: 60px !important;
+    padding: 8px !important;
+}
+
+/* 4. LE POINT CRITIQUE : Les signatures en 2 colonnes */
+#page1 .p1-signature-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important; /* Côte à côte */
+    gap: 15px !important;
+    padding: 0 25px 15px 25px !important;
+    margin-top: 10px !important;
+}
+
+#page1 .p1-sig-body {
+    padding: 10px !important;
+}
+
+#page1 .p1-sig-canvas {
+    height: 90px !important; /* Réduction de 120px à 90px pour gagner 3cm */
+}
+
+/* 5. Force le tout à tenir sur une page au moment du PDF */
+@media print {
+    #page1 .main-container {
+        border: none !important;
+        box-shadow: none !important;
+    }
+    
+    /* Évite que le navigateur n'ajoute des marges folles */
+    @page {
+        size: A4;
+        margin: 5mm !important;
+    }
+}
+@media print {
+    /* 1. Reset total de la page */
+    @page {
+        size: A4;
+        margin: 10mm 5mm !important; /* Marges fixes pour éviter les sauts de ligne */
+    }
+
+    html, body {
+        height: auto !important;
+        background: white !important;
+    }
+
+    /* 2. On affiche TOUTES les sections au moment de l'impression */
+    #SECTION_APPLICATION, .page-content {
+        display: block !important;
+        width: 100% !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    /* 3. LE SECRET : Forcer le saut de page APRES chaque section */
+    #page1, #page2 {
+        page-break-after: always !important;
+        break-after: page !important;
+        display: block !important;
+        margin-bottom: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* 4. On compacte la Page 1 pour qu'elle ne dépasse jamais */
+    #page1 .main-container {
+        border: none !important;
+        box-shadow: none !important;
+        max-width: 100% !important;
+    }
+
+    /* Signatures côte à côte obligatoires pour gagner 15cm */
+    #page1 .p1-signature-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 10px !important;
+        margin-top: 10px !important;
+    }
+
+    /* On réduit un peu les canvas pour la sécurité */
+    #page1 .p1-sig-canvas { height: 90px !important; }
+    
+    /* On réduit les zones de texte pour pas qu'elles poussent tout */
+    textarea { height: 80px !important; min-height: 80px !important; }
+
+    /* 5. Cacher l'interface */
+    .nav-tabs, .btn-clear-sig, button, .no-print {
+        display: none !important;
+    }
+}
+
+@media print {
+    /* On force l'affichage du header spécifique à la fiche */
+    .header-fiche {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        border-bottom: 2px solid var(--accent) !important;
+        padding: 10px 25px !important;
+        background: white !important;
+        -webkit-print-color-adjust: exact !important;
+    }
+
+    /* On s'assure que le logo et le titre ne sont pas masqués */
+    .logo-container, .title-container {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    .title-container h1 { font-size: 18px !important; color: black !important; }
+    .title-container p { font-size: 11px !important; color: #2563eb !important; }
+}
+/* --- SECTION SIGNATURES (Vérifie que ce bloc remplace tes anciens blocs signatures) --- */
+.p1-signature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 20px;
+    padding: 0 25px;
+}
+
+.p1-sig-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.p1-sig-header {
+    background: #1e293b;
+    color: white;
+    padding: 10px 15px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-bottom: 2px solid #0f172a;
+}
+
+.p1-sig-body {
+    padding: 15px;
+    background: #f8fafc;
+}
+
+.p1-sig-label {
+    display: block;
+    font-size: 10px;
+    color: #64748b;
+    font-weight: 700;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+
+.p1-sig-input {
+    width: 100%;
+    padding: 8px;
+    font-size: 13px;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.p1-sig-canvas {
+    background: white;
+    border: 2px dashed #cbd5e1;
+    border-radius: 6px;
+    width: 100%;
+    height: 100px;
+}
+
+/* --- LE BLOC D'IMPRESSION UNIQUE (CONTRAT REMPLI) --- */
+@media print {
+    /* 1. Configuration de la page */
+    @page {
+        size: A4;
+        margin: 5mm 5mm !important;
+    }
+
+    /* 2. Affichage des éléments critiques */
+    html, body {
+        height: auto !important;
+        overflow: visible !important;
+        background: white !important;
+    }
+
+    #SECTION_APPLICATION, .page-content {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    /* 3. Cache l'interface mais GARDE le contenu */
+    .nav-tabs, .tab-container, button, .btn-clear-sig, .no-print, .thumb-del {
+        display: none !important;
+    }
+
+    /* 4. Forçage de l'En-tête (Header) */
+    .header-fiche {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 5px 25px !important;
+        border-bottom: 2px solid #2563eb !important;
+        margin-bottom: 10px !important;
+        -webkit-print-color-adjust: exact !important;
+    }
+
+    /* 5. Compression Page 1 pour faire tout tenir */
+    #page1 .main-container {
+        border: none !important;
+        box-shadow: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .identity-section { padding: 5px 25px !important; gap: 10px !important; }
+    .config-grid { padding: 0 25px 5px 25px !important; }
+    .info-cabinet-section { padding: 0 25px 5px 25px !important; }
+    .observation-section { padding: 0 25px 5px 25px !important; }
+    
+    textarea { 
+        min-height: 60px !important; 
+        height: 60px !important; 
+        font-size: 11px !important;
+    }
+
+    /* 6. Signatures en mode PDF */
+    .p1-signature-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 15px !important;
+        margin-top: 5px !important;
+        page-break-inside: avoid !important;
+    }
+
+    .p1-sig-canvas {
+        height: 80px !important;
+        border: 1px solid #000 !important;
+    }
+
+    /* 7. Gestion des sauts de page pour 2 et 3 */
+    #page1, #page2 {
+        page-break-after: always !important;
+    }
+}
+
+/* --- [VOTRE CODE DE BASE CONSERVÉ JUSQU'AUX CHECKBOXES] --- */
+
+@media print {
+    /* 1. Configuration de la page */
+    @page {
+        size: A4;
+        margin: 5mm 5mm !important;
+    }
+
+    /* 2. Affichage des éléments critiques et masquage interface */
+    html, body {
+        height: auto !important;
+        overflow: visible !important;
+        background: white !important;
+    }
+
+    #SECTION_APPLICATION, .page-content {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    /* On cache l'interface (onglets, boutons d'action) */
+    .nav-tabs, .tab-container, button, .btn-clear-sig, .no-print, .thumb-del, .btn-suppr {
+        display: none !important;
+    }
+
+    /* 3. REPARATION DES CHECKBOXES (Plus de bloc noir) */
+    input[type="checkbox"] {
+        appearance: none;
+        -webkit-appearance: none;
+        width: 16px !important;
+        height: 16px !important;
+        border: 2px solid #2563eb !important; /* Bordure bleue accent */
+        background: white !important;
+        display: inline-block;
+        position: relative;
+        vertical-align: middle;
+        border-radius: 3px;
+    }
+    
+    /* Le symbole Check au lieu du remplissage noir */
+    input[type="checkbox"]:checked::after {
+        content: '✔';
+        position: absolute;
+        top: -3px;
+        left: 1px;
+        font-size: 14px;
+        color: #2563eb !important;
+        font-weight: bold;
+    }
+
+    /* 4. Forçage de l'En-tête (Header) pro */
+    .header-fiche {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 5px 25px !important;
+        border-bottom: 2px solid #2563eb !important;
+        margin-bottom: 10px !important;
+        -webkit-print-color-adjust: exact !important;
+    }
+
+    /* 5. Compression Page 1 pour éviter les débordements */
+    #page1 .main-container {
+        border: none !important;
+        box-shadow: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .identity-section { padding: 5px 25px !important; gap: 10px !important; }
+    .config-grid { padding: 0 25px 5px 25px !important; }
+    .info-cabinet-section { padding: 0 25px 5px 25px !important; }
+    .observation-section { padding: 0 25px 5px 25px !important; }
+    
+    textarea { 
+        min-height: 60px !important; 
+        height: 60px !important; 
+        font-size: 11px !important;
+        border: 1px solid #e2e8f0 !important;
+    }
+
+    /* 6. Signatures côte à côte sur le PDF */
+    .p1-signature-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 15px !important;
+        margin-top: 5px !important;
+        padding: 0 25px !important;
+        page-break-inside: avoid !important;
+    }
+
+    .p1-sig-canvas {
+        height: 80px !important;
+        border: 1px solid #cbd5e1 !important;
+        background: white !important;
+    }
+
+    /* 7. Sauts de page automatiques */
+    #page1, #page2 {
+        page-break-after: always !important;
+    }
+}
+
+
     </style>
 </head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -429,7 +854,13 @@ input[type="radio"], input[type="checkbox"] {
             </div>
             <h1 style="font-weight: 800; font-size: 22px; letter-spacing: -0.02em; margin:0;">PRODUCTION ATELIER <span style="color:var(--accent)">2026</span></h1>
         </div>
-        <button class="btn-main" onclick="creerFiche()">+ Nouvelle Fiche</button>
+        <div style="display: flex; gap: 10px;">
+        <button onclick="changerUtilisateur()" style="background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; padding: 0 15px; border-radius: 8px; font-size: 11px; font-weight: 700; cursor: pointer; height: 40px; display: flex; align-items: center; gap: 5px;">
+            👤 <span id="label-utilisateur">SESSION</span>
+        </button>
+        
+        <button class="btn-main" onclick="creerFiche()" style="margin:0; height: 40px;">+ Nouvelle Fiche</button>
+    </div>
     </div>
     <div id="bloc-planning" class="grid-mois"></div>
 </div>
@@ -457,105 +888,146 @@ input[type="radio"], input[type="checkbox"] {
     </div>
 
     <div id="page1" class="page-content active">
-        <div class="main-container">
-            <header class="header-fiche">
-                <div class="logo-container" style="width:150px;">
-                    <img src="Logo_SAS_CAILLE.png" alt="SAS CAILLE" style="max-width:100%; display:none;">
-                    <span style="font-weight:900; color:var(--primary); font-size:14px;">SAS CAILLE</span>
-                </div>
-                <div class="title-container">
-                    <h1>Contrôles & Essais</h1>
-                    <p>CONFORMITÉ ARMOIRES ÉLECTRIQUES</p>
-                </div>
-            </header>
+    <div class="main-container">
+        <header class="header-fiche">
+            <div class="logo-container" style="width:150px;">
+                <img src="Logo_SAS_CAILLE.png" alt="SAS CAILLE" style="max-width:100%; display:none;">
+                <span style="font-weight:900; color:var(--primary); font-size:14px;">SAS CAILLE</span>
+            </div>
+            <div class="title-container">
+                <h1>Contrôles & Essais</h1>
+                <p>CONFORMITÉ ARMOIRES ÉLECTRIQUES</p>
+            </div>
+        </header>
 
-            <section class="identity-section">
-                <div class="info-card">
-                    <div class="card-label">Fabricant</div>
-                    <div class="card-content">
-                        <div class="input-row"><div class="field-name">Société</div><div class="field-value"><input type="text" id="emetteur_soc" value="SAS CAILLE"></div></div>
-                        <div class="input-row"><div class="field-name">Pays</div><div class="field-value"><input type="text" id="emetteur_pays_val" value="FRANCE"></div></div>
-                        <div class="input-row"><div class="field-name">Code Postal</div><div class="field-value"><input type="text" id="emetteur_cp" value="62159"></div></div>
-                        <div class="input-row"><div class="field-name">Ville</div><div class="field-value"><input type="text" id="emetteur_ville" value="Vaulx-Vraucourt"></div></div>
-                        <div class="input-row"><div class="field-name">Adresse</div><div class="field-value"><input type="text" id="emetteur_adr" value="6 route de Douai"></div></div>
-                        <div class="input-row"><div class="field-name">Téléphone</div><div class="field-value"><input type="text" id="emetteur_tel" value="03.21.50.62.08"></div></div>
+        <section class="identity-section">
+            <div class="info-card">
+                <div class="card-label">Fabricant</div>
+                <div class="card-content">
+                    <div class="input-row"><div class="field-name">Société</div><div class="field-value"><input type="text" id="emetteur_soc" value="SAS CAILLE"></div></div>
+                    <div class="input-row"><div class="field-name">Pays</div><div class="field-value"><input type="text" id="emetteur_pays_val" value="FRANCE"></div></div>
+                    <div class="input-row"><div class="field-name">Code Postal</div><div class="field-value"><input type="text" id="emetteur_cp" value="62159"></div></div>
+                    <div class="input-row"><div class="field-name">Ville</div><div class="field-value"><input type="text" id="emetteur_ville" value="Vaulx-Vraucourt"></div></div>
+                    <div class="input-row"><div class="field-name">Adresse</div><div class="field-value"><input type="text" id="emetteur_adr" value="6 route de Douai"></div></div>
+                    <div class="input-row"><div class="field-name">Téléphone</div><div class="field-value"><input type="text" id="emetteur_tel" value="03.21.50.62.08"></div></div>
+                </div>
+            </div>
+
+            <div class="info-card" style="border-color: #bfdbfe;">
+                <div class="card-label" style="background: #eff6ff; color: var(--accent);">Client</div>
+                <div class="card-content">
+                    <div class="input-row"><div class="field-name">Société</div><div class="field-value"><input type="text" id="dest_soc" placeholder="Nom du client"></div></div>
+                    <div class="input-row"><div class="field-name">Chantier</div><div class="field-value"><input type="text" id="dest_chan" placeholder="Nom du chantier"></div></div>
+                    <div class="input-row"><div class="field-name">Pays</div><div class="field-value"><input type="text" id="dest_pays" placeholder="Pays du chantier"></div></div>
+                    <div class="input-row"><div class="field-name">Ville</div><div class="field-value"><input type="text" id="dest_ville" placeholder="Ville du chantier"></div></div>
+                    <div class="input-row"><div class="field-name">Code Postal</div><div class="field-value"><input type="text" id="dest_cp" placeholder="Code postal"></div></div>
+                    <div class="input-row"><div class="field-name">Adresse</div><div class="field-value"><input type="text" id="dest_adr" placeholder="Adresse du chantier"></div></div>
+                </div>
+            </div>
+        </section>
+
+        <div class="config-grid">
+            <div class="config-group">
+                <div class="config-title">Type de matériel (Unique)</div>
+                <div class="tile-container">
+                    <div class="tile" onclick="selectUnique(this, 'armoire')"><span>Armoire</span></div>
+                    <div class="tile" onclick="selectUnique(this, 'coffret')"><span>Coffret</span></div>
+                    <div class="tile" onclick="selectUnique(this, 'chassis')"><span>Châssis</span></div>
+                </div>
+            </div>
+            <div class="config-group">
+                <div class="config-title">Fonction (Multiple)</div>
+                <div class="tile-container">
+                    <div class="tile" onclick="selectMulti(this, 'puissance')"><span>Puissance</span></div>
+                    <div class="tile" onclick="selectMulti(this, 'commande')"><span>Commande</span></div>
+                    <div class="tile" onclick="selectMulti(this, 'distribution')"><span>Distribution</span></div>
+                </div>
+            </div>
+        </div>
+
+        <section class="info-cabinet-section">
+            <div class="info-card" style="border-left: 4px solid var(--accent);">
+                <div class="card-label">Informations Armoire</div>
+                <div class="card-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0 30px;">
+                    <div>
+                        <div class="input-row"><div class="field-name">Nom de schéma</div><div class="field-value"><input type="text" id="nom_schema"></div></div>
+                        <div class="input-row"><div class="field-name">Indice schéma</div><div class="field-value"><input type="text" id="indice_schema"></div></div>
+                        <div class="input-row"><div class="field-name">Dessinateur</div><div class="field-value"><input type="text" id="dessinateur"></div></div>
+                        <div class="input-row"><div class="field-name">Référent</div><div class="field-value"><input type="text" id="referent"></div></div>
+                        <div class="input-row"><div class="field-name">Câbleur (s)</div><div class="field-value"><input type="text" id="cableurs"></div></div>
+                        <div class="input-row"><div class="field-name">Vérificateur</div><div class="field-value"><input type="text" id="verificateurs"></div></div>
+                    </div>
+                    <div>
+                        <div class="input-row"><div class="field-name">Livraison prévisionelle</div><div class="field-value"><input type="date" id="date_livraison"></div></div>
+                        <div class="input-row"><div class="field-name">Début Câblage</div><div class="field-value"><input type="date" id="date_debut"></div></div>
+                        <div class="input-row"><div class="field-name">Fin Câblage</div><div class="field-value"><input type="date" id="date_fin"></div></div>
+                        <div class="input-row"><div class="field-name">Vérification</div><div class="field-value"><input type="date" id="date_verif"></div></div>
+                        <div class="input-row"><div class="field-name">Taille (H/L/P)</div><div class="field-value">
+                            <input type="text" id="taille_h" placeholder="Hauteur" style="width: 65px;">
+                            <input type="text" id="taille_l" placeholder="Largeur" style="width: 65px;">
+                            <input type="text" id="taille_p" placeholder="Profondeur" style="width: 65px;">
+                            <span class="unit">mm</span>
+                        </div></div>
+                        <div class="input-row"><div class="field-name">Poids</div><div class="field-value"><input type="text" id="Poids" placeholder="0" style="width: 50px;"><span class="unit">Kg</span></div></div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <div class="info-card" style="border-color: #bfdbfe;">
-                    <div class="card-label" style="background: #eff6ff; color: var(--accent);">Client</div>
-                    <div class="card-content">
-                        <div class="input-row"><div class="field-name">Société</div><div class="field-value"><input type="text" id="dest_soc" placeholder="Nom du client"></div></div>
-                        <div class="input-row"><div class="field-name">Chantier</div><div class="field-value"><input type="text" id="dest_chan" placeholder="Nom du chantier"></div></div>
-                        <div class="input-row"><div class="field-name">Pays</div><div class="field-value"><input type="text" id="dest_pays" placeholder="Pays du chantier"></div></div>
-                        <div class="input-row"><div class="field-name">Ville</div><div class="field-value"><input type="text" id="dest_ville" placeholder="Ville du chantier"></div></div>
-                        <div class="input-row"><div class="field-name">Code Postal</div><div class="field-value"><input type="text" id="dest_cp" placeholder="Code postal"></div></div>
-                        <div class="input-row"><div class="field-name">Adresse</div><div class="field-value"><input type="text" id="dest_adr" placeholder="Adresse du chantier"></div></div>
-                    </div>
+        <section class="observation-section">
+            <div class="info-card">
+                <div class="card-label">OBSERVATIONS PRÉALABLES</div>
+                <div class="card-content">
+                    <textarea id="obs_prealables" placeholder="Décrivez ici l'état général avant essais..."></textarea>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <div class="config-grid">
-                <div class="config-group">
-                    <div class="config-title">Type de matériel (Unique)</div>
-                    <div class="tile-container">
-                        <div class="tile" onclick="selectUnique(this, 'armoire')"><span>Armoire</span></div>
-                        <div class="tile" onclick="selectUnique(this, 'coffret')"><span>Coffret</span></div>
-                        <div class="tile" onclick="selectUnique(this, 'chassis')"><span>Châssis</span></div>
+        <section class="p1-signature-grid" style="padding: 0 25px 25px 25px;">
+            <div class="p1-sig-card">
+                <div class="p1-sig-header">👤 Câbleur</div>
+                <div class="p1-sig-body">
+                    <div class="p1-sig-row">
+                        <span class="p1-sig-label">Nom & Prénom</span>
+                        <input type="text" id="sig_cableur_nom" class="p1-sig-input">
                     </div>
-                </div>
-                <div class="config-group">
-                    <div class="config-title">Fonction (Multiple)</div>
-                    <div class="tile-container">
-                        <div class="tile" onclick="selectMulti(this, 'puissance')"><span>Puissance</span></div>
-                        <div class="tile" onclick="selectMulti(this, 'commande')"><span>Commande</span></div>
-                        <div class="tile" onclick="selectMulti(this, 'distribution')"><span>Distribution</span></div>
+                    <div class="p1-sig-row">
+                        <span class="p1-sig-label">Date du contrôle</span>
+                        <input type="date" id="sig_cableur_date" class="p1-sig-input">
+                    </div>
+                    <div class="p1-sig-row" style="margin-top: 15px;">
+                        <span class="p1-sig-label">Signature</span>
+                        <div style="position: relative;">
+                            <canvas id="canvas_sig_cableur" class="p1-sig-canvas" width="400" height="120"></canvas>
+                            <button type="button" class="btn-clear-sig" onclick="clearSignature('canvas_sig_cableur')">Effacer ↺</button>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <section class="info-cabinet-section">
-                <div class="info-card" style="border-left: 4px solid var(--accent);">
-                    <div class="card-label">Informations Armoire</div>
-                    <div class="card-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0 30px;">
-                        <div>
-                            <div class="input-row"><div class="field-name">Nom de schéma</div><div class="field-value"><input type="text" id="nom_schema"></div></div>
-                            <div class="input-row"><div class="field-name">Indice schéma</div><div class="field-value"><input type="text" id="indice_schema"></div></div>
-                            <div class="input-row"><div class="field-name">Dessinateur</div><div class="field-value"><input type="text" id="dessinateur"></div></div>
-                            <div class="input-row"><div class="field-name">Référent</div><div class="field-value"><input type="text" id="referent"></div></div>
-                            <div class="input-row"><div class="field-name">Câbleur (s)</div><div class="field-value"><input type="text" id="cableurs"></div></div>
-                            <div class="input-row"><div class="field-name">Vérificateur</div><div class="field-value"><input type="text" id="verificateurs"></div></div>
-                        </div>
-                        <div>
-                            <div class="input-row"><div class="field-name">Livraison prévisionelle</div><div class="field-value"><input type="date" id="date_livraison"></div></div>
-                            <div class="input-row"><div class="field-name">Début Câblage</div><div class="field-value"><input type="date" id="date_debut"></div></div>
-                            <div class="input-row"><div class="field-name">Fin Câblage</div><div class="field-value"><input type="date" id="date_fin"></div></div>
-                            <div class="input-row"><div class="field-name">Vérification</div><div class="field-value"><input type="date" id="date_verif"></div></div>
-                            <div class="input-row"><div class="field-name">Taille (H/L/P)</div><div class="field-value">
-                                <input type="text" id="taille_h" placeholder="Hauteur" style="width: 65px;">
-                                <input type="text" id="taille_l" placeholder="Largeur" style="width: 65px;">
-                                <input type="text" id="taille_p" placeholder="Profondeur" style="width: 65px;">
-                                <span class="unit">mm</span>
-                            </div></div>
-                            <div class="input-row"><div class="field-name">Poids</div><div class="field-value"><input type="text" id="Poids" placeholder="0" style="width: 50px;"><span class="unit">Kg</span></div></div>
+            <div class="p1-sig-card">
+                <div class="p1-sig-header">🛡️ Vérificateur</div>
+                <div class="p1-sig-body">
+                    <div class="p1-sig-row">
+                        <span class="p1-sig-label">Nom & Prénom</span>
+                        <input type="text" id="sig_verif_nom" class="p1-sig-input">
+                    </div>
+                    <div class="p1-sig-row">
+                        <span class="p1-sig-label">Date de validation</span>
+                        <input type="date" id="sig_verif_date" class="p1-sig-input">
+                    </div>
+                    <div class="p1-sig-row" style="margin-top: 15px;">
+                        <span class="p1-sig-label">Signature</span>
+                        <div style="position: relative;">
+                            <canvas id="canvas_sig_verif" class="p1-sig-canvas" width="400" height="120"></canvas>
+                            <button type="button" class="btn-clear-sig" onclick="clearSignature('canvas_sig_verif')">Effacer ↺</button>
                         </div>
                     </div>
                 </div>
-            </section>
-
-            <section class="observation-section">
-                <div class="info-card">
-                    <div class="card-label">OBSERVATIONS PRÉALABLES</div>
-                    <div class="card-content">
-                        <textarea id="obs_prealables" placeholder="Décrivez ici l'état général avant essais..."></textarea>
-                    </div>
-                </div>
-            </section>
-			
-			
-			
-        </div>
+            </div>
+        </section>
     </div>
+</div>
     
     <div id="page2" class="page-content">
     <style>
@@ -1163,316 +1635,111 @@ input[type="radio"], input[type="checkbox"] {
 			
         </div>
 		
-		<section class="p1-signature-grid" style="margin-top: 30px;">
-   <section class="p1-signature-grid">
-    <div class="p1-sig-card">
-        <div class="p1-sig-header">
-            👤 Câbleur
-        </div>
-        <div class="p1-sig-body">
-            <div class="p1-sig-row">
-                <span class="p1-sig-label">Nom & Prénom</span>
-                <input type="text" id="sig_cableur_nom" class="p1-sig-input">
-            </div>
-            
-            <div class="p1-sig-row">
-                <span class="p1-sig-label">Date du contrôle</span>
-                <input type="date" id="sig_cableur_date" class="p1-sig-input">
-            </div>
-
-            <div class="p1-sig-row" style="margin-top: 20px;">
-                <span class="p1-sig-label">Signature</span>
-                <div style="position: relative;">
-                    <canvas id="canvas_sig_cableur" class="p1-sig-canvas" width="400" height="120"></canvas>
-                    <button type="button" class="btn-clear-sig" onclick="clearSignature('canvas_sig_cableur')">Effacer ↺</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="p1-sig-card">
-        <div class="p1-sig-header">
-            🛡️ Vérificateur
-        </div>
-        <div class="p1-sig-body">
-            <div class="p1-sig-row">
-                <span class="p1-sig-label">Nom & Prénom</span>
-                <input type="text" id="sig_verif_nom" class="p1-sig-input">
-            </div>
-
-            <div class="p1-sig-row">
-                <span class="p1-sig-label">Date de validation</span>
-                <input type="date" id="sig_verif_date" class="p1-sig-input">
-            </div>
-
-            <div class="p1-sig-row" style="margin-top: 20px;">
-                <span class="p1-sig-label">Signature</span>
-                <div style="position: relative;">
-                    <canvas id="canvas_sig_verif" class="p1-sig-canvas" width="400" height="120"></canvas>
-                    <button type="button" class="btn-clear-sig" onclick="clearSignature('canvas_sig_verif')">Effacer ↺</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-</section>
     </div>
 </div>
 	
 	
 
-    <script>
+  <script type="module">
     /* =========================================
-       1. GESTION DES PHOTOS (Rien ne change ici)
+       0. CONFIGURATION CLOUD + OFFLINE + REALTIME
        ========================================= */
-    let photoGallery = [];
-
-    function triggerCamera() { document.getElementById('cameraInput').click(); }
-
-   function handleFiles(files) {
-    const container = document.getElementById('photo-preview-container');
-    if (photoGallery.length === 0) container.innerHTML = "";
-    
-    Array.from(files).forEach(file => {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            const img = new Image();
-            img.onload = function() {
-                // Création d'un canvas pour redimensionner
-                const canvas = document.createElement('canvas');
-                let width = img.width;
-                let height = img.height;
-                
-                // Limite à 1024px max (suffisant pour un PV)
-                const max_size = 1024;
-                if (width > height) {
-                    if (width > max_size) { height *= max_size / width; width = max_size; }
-                } else {
-                    if (height > max_size) { width *= max_size / height; height = max_size; }
-                }
-                
-                canvas.width = width;
-                canvas.height = height;
-                const ctx = canvas.getContext("2d");
-                ctx.drawImage(img, 0, 0, width, height);
-                
-                // Compression en JPEG qualité 0.7 (70%)
-                const compressedBase64 = canvas.toDataURL("image/jpeg", 0.7);
-                
-                // Ajout à la galerie
-                photoGallery.push(compressedBase64);
-                
-                const wrapper = document.createElement('div');
-                wrapper.className = 'thumb-wrapper';
-                wrapper.innerHTML = `<img src="${compressedBase64}" class="thumb-img"><div class="thumb-del" onclick="removePhoto(this, '${compressedBase64.substring(0,50)}')">×</div>`;
-                container.appendChild(wrapper);
-                updatePhotoValidation();
-            };
-            img.src = e.target.result;
-        };
-        reader.readAsDataURL(file);
-    });
-}
-
-    function removePhoto(btn, partial) {
-        btn.parentElement.remove();
-        photoGallery = photoGallery.filter(img => !img.startsWith(partial));
-        if (photoGallery.length === 0) container.innerHTML = '<span style="color: #94a3b8; font-size: 10px; font-style: italic;">Aucune photo sélectionnée.</span>';
-        updatePhotoValidation();
-    }
-
-    function updatePhotoValidation() {
-    const row = document.getElementById('row-photo-logic');
-    const statusText = document.getElementById('photo-status-text');
-    const obs = document.getElementById('photo-obs');
-    
-    if (photoGallery.length > 0) {
-        row.classList.remove('row-nc'); 
-        row.classList.add('row-corrected');
-        statusText.innerText = "✅ " + photoGallery.length + " PHOTO(S) DANS LE DOSSIER";
-        obs.value = "Prêtes pour export PDF Photos.";
-    } else {
-        // On enlève row-nc pour ne plus marquer de défaut obligatoire
-        row.classList.remove('row-nc', 'row-corrected'); 
-        statusText.innerText = "ℹ️ AUCUNE PHOTO (OU DOSSIER PURGÉ)";
-        obs.value = "Les photos peuvent être supprimées après génération du PDF.";
-    }
-    syncToPage1();
-}
-
-    /* =========================================
-   2. LOGIQUE DE CONTRÔLE (NC/SO/CORRIGÉ) - PAGES 2 & 3
-   ========================================= */
-
-/**
- * Gère le changement d'état d'une ligne (C, NC, SO)
- */
-function updateRow(element, status, isLoading = false) {
-    const row = element.closest('tr');
-    const verifCheckbox = row.querySelector('.p2-td-verif input, .p3-td-verif input');
-    const textarea = row.querySelector('.p2-obs-textarea, .p3-obs-textarea');
-    
-    row.classList.remove('row-so', 'row-nc', 'row-corrected');
-    
-    // On ne décoche la vérif que si on n'est pas en train de charger la fiche
-    if(verifCheckbox && !isLoading) verifCheckbox.checked = false;
-
-    if (status === 'so') {
-        row.classList.add('row-so');
-    } else if (status === 'nc') {
-        row.classList.add('row-nc');
-        // On n'ajoute "Défaut :" que si on n'est pas en train de charger
-        if (!isLoading && textarea && !textarea.value.startsWith("Défaut :")) {
-            textarea.value = "Défaut : " + textarea.value;
-        }
-    }
-    syncToPage1();
-}
-
-function toggleVerify(checkbox, isLoading = false) {
-    const row = checkbox.closest('tr');
-    const textarea = row.querySelector('.p2-obs-textarea, .p3-obs-textarea');
-    
-    if (checkbox.checked) {
-        row.classList.remove('row-nc');
-        row.classList.add('row-corrected');
-        if(textarea) {
-            textarea.style.color = "#15803d"; 
-            // On n'ajoute la date que si c'est une action manuelle (pas au chargement)
-            if(!isLoading && !textarea.value.includes("(Corrigé le")) {
-                textarea.value += " (Corrigé le " + new Date().toLocaleDateString() + ")";
-            }
-        }
-    } else {
-        row.classList.remove('row-corrected');
-        if (row.querySelector('input[id$="_nc"]')?.checked) {
-            row.classList.add('row-nc');
-        }
-        if(textarea) textarea.style.color = "";
-    }
-    syncToPage1();
-}
-
-/**
- * Synchronise tous les défauts des Pages 2 et 3 vers la Page 1
- */
-function syncToPage1() {
-    let report = "";
-    // On sélectionne toutes les lignes de contrôle des deux pages
-    // On exclut les lignes de catégorie et les prévisualisations photo
-    const rows = document.querySelectorAll(`
-        #control-body tr:not(.p2-category-row):not(#row-photo-preview),
-        #page3 .p3-table tbody tr:not(.p3-category-row)
-    `);
-
-    rows.forEach(row => {
-        const pointCell = row.querySelector('td:first-child');
-        const textarea = row.querySelector('.p2-obs-textarea, .p3-obs-textarea');
-        
-        // Si la ligne est en NC ou Corrigée, on ajoute au rapport
-        if ((row.classList.contains('row-nc') || row.classList.contains('row-corrected')) && textarea && textarea.value.trim() !== "") {
-            // Nettoyage du texte du point de contrôle pour le rapport
-            let pointLabel = pointCell.innerText.replace(/- /g, '').replace(/\n/g, '').trim();
-            report += `• ${pointLabel}: ${textarea.value.trim()}\n`;
-        }
-    });
-
-    const p1Obs = document.getElementById('obs_prealables');
-    if (p1Obs) { 
-        p1Obs.value = report; 
-        // Ajustement automatique de la hauteur du champ en Page 1
-        p1Obs.style.height = 'auto';
-        p1Obs.style.height = p1Obs.scrollHeight + 'px'; 
-    }
-}
-
-/**
- * Auto-expansion des textareas au fur et à mesure de la saisie
- */
-function autoExpand(t) { 
-    t.style.height = 'inherit'; 
-    t.style.height = t.scrollHeight + 'px'; 
-    syncToPage1(); 
-}
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { 
+        getFirestore, doc, setDoc, getDoc, collection, getDocs, 
+        enableIndexedDbPersistence, onSnapshot, deleteDoc 
+    } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 	
-    /* =========================================
-       3. SELECTION ARMOIRE/COFFRET ET FILTRES (CORRIGÉ)
-       ========================================= */
-    
-    // Fonction unique pour le choix Armoire/Coffret/Chassis
-    function selectUnique(element, type) {
-        // 1. Visuel bouton (Page 1)
-        const group = element.parentElement;
-        group.querySelectorAll('.tile').forEach(t => t.classList.remove('active'));
-        element.classList.add('active');
+	let utilisateurActuel = localStorage.getItem('nom_utilisateur');
 
-        // 2. Sauvegarde mémoire
-        localStorage.setItem('selectedDeviceType', type);
+	if (!utilisateurActuel) {
+		utilisateurActuel = prompt("Bienvenue sur SAS CAILLE 2026 !\nVeuillez entrer votre Prénom (ou Nom) :");
+		
+		// Si l'utilisateur clique sur annuler ou laisse vide, on lui donne un nom par défaut
+		if (!utilisateurActuel || utilisateurActuel.trim() === "") {
+			utilisateurActuel = "Anonyme_" + Math.floor(Math.random() * 100);
+		}
+		
+		localStorage.setItem('nom_utilisateur', utilisateurActuel);
+	}
+    const firebaseConfig = {
+        apiKey: "AIzaSyDkCAaQkVHAPyBhNLZNCh2ZM7QiYopPldA",
+        authDomain: "sas-caille-controle.firebaseapp.com",
+        projectId: "sas-caille-controle",
+        storageBucket: "sas-caille-controle.firebasestorage.app",
+        messagingSenderId: "81000263673",
+        appId: "1:81000263673:web:14877d316b1cd38ef31728"
+    };
 
-        // 3. Application de la logique
-        applyDeviceType(type);
-    }
+    const app = initializeApp(firebaseConfig);
+    const db_cloud = getFirestore(app);
 
-    // Fonction qui applique les changements (utilisée au clic ET au chargement)
-    function applyDeviceType(type) {
-        // Changement des textes dynamiques dans les titres
-        document.querySelectorAll('.dynamic-device-name').forEach(span => {
-            span.innerText = type; 
-        });
-
-        // Changement du titre Dossier Photo
-        const photoLabel = document.getElementById('photo-label');
-        if (photoLabel) photoLabel.innerText = "- Dossier photographique " + type;
-
-        // Filtrage des lignes du tableau
-        document.querySelectorAll('.only-armoire, .only-coffret, .only-chassis').forEach(r => r.style.display = 'none');
-        document.querySelectorAll('.only-' + type).forEach(r => r.style.display = 'table-row');
-    }
-
-    // Fonction unique pour Puissance/Commande/Distribution
-    function selectMulti(element, fonction) {
-        // 1. Visuel
-        element.classList.toggle('active');
-        
-        // 2. Sauvegarde mémoire
-        saveMultiState();
-
-        // 3. Application
-        applyFunctions();
-    }
-
-    function saveMultiState() {
-        const activeMultis = [];
-        // On suppose que tes boutons multi ont un attribut onclick contenant le type
-        document.querySelectorAll('.tile.active').forEach(tile => {
-            const onclickText = tile.getAttribute('onclick');
-            if(onclickText && onclickText.includes('selectMulti')) {
-                 // Petite astuce pour récupérer 'puissance' depuis "selectMulti(this, 'puissance')"
-                 const match = onclickText.match(/'([^']+)'/);
-                 if(match) activeMultis.push(match[1]);
-            }
-        });
-        localStorage.setItem('activeFunctions', JSON.stringify(activeMultis));
-    }
-
-    function applyFunctions() {
-        // D'abord on cache tout ce qui est spécifique
-        document.querySelectorAll('.only-puissance, .only-commande, .only-distribution').forEach(r => r.style.display = 'none');
-        
-        // On récupère ce qui doit être affiché depuis le stockage ou les boutons actifs
-        const activeMultis = JSON.parse(localStorage.getItem('activeFunctions') || '[]');
-        
-        activeMultis.forEach(f => {
-            document.querySelectorAll('.only-' + f).forEach(r => r.style.display = 'table-row');
-        });
-    }
+    enableIndexedDbPersistence(db_cloud).catch((err) => {
+        if (err.code == 'failed-precondition') console.warn("Persistance : Échec (onglets)");
+        else if (err.code == 'unimplemented') console.warn("Navigateur non supporté");
+    });
 
     /* =========================================
-       4. GESTION DU PLANNING ET FICHES
+       1. VARIABLES GLOBALES
        ========================================= */
     let db = JSON.parse(localStorage.getItem('fiches_2026') || '[]');
     let currentFicheId = null;
+	let photoGallery = [];
 
+    /* =========================================
+       2. INDICATEUR DE CONNEXION
+       ========================================= */
+    function updateOnlineStatus() {
+        const statusEl = document.getElementById('cloud-status') || createStatusIndicator();
+        statusEl.style.backgroundColor = navigator.onLine ? "#2ecc71" : "#e74c3c";
+    }
+
+    function createStatusIndicator() {
+        const div = document.createElement('div');
+        div.id = 'cloud-status';
+        div.style = "position:fixed; top:10px; right:10px; width:12px; height:12px; border-radius:50%; border:2px solid white; z-index:9999;";
+        document.body.appendChild(div);
+        return div;
+    }
+
+    window.addEventListener('online', updateOnlineStatus);
+    window.addEventListener('offline', updateOnlineStatus);
+
+    /* =========================================
+       3. SAUVEGARDE & CRÉATION (VERSION UNIQUE)
+       ========================================= */
+    async function saveDB() {
+        localStorage.setItem('fiches_2026', JSON.stringify(db));
+        if (currentFicheId) {
+            const fiche = db.find(f => f.id === currentFicheId);
+            if (fiche) {
+                try {
+                    await setDoc(doc(db_cloud, "FICHES", String(currentFicheId)), fiche, { merge: true });
+                } catch (e) { console.error("Synchro error", e); }
+            }
+        }
+    }
+
+    window.creerFiche = async function() {
+        const id = Date.now();
+        const nouvelleFiche = { 
+            id: id, 
+            mois: new Date().getMonth(), 
+            client: "", chantier: "", armoire: "", of: "", 
+            obs_prealables: "", activeTiles: [], data: {},
+            verrouillePar: utilisateurActuel 
+        };
+        db.push(nouvelleFiche);
+        try {
+            await setDoc(doc(db_cloud, "FICHES", String(id)), nouvelleFiche);
+            currentFicheId = id;
+            ouvrirFiche(id);
+        } catch (e) { console.error("Erreur création", e); }
+    };
+
+    /* =========================================
+       4. LOGIQUE PLANNING & OUVERTURE
+       ========================================= */
     function chargerPlanning() {
         document.getElementById('SECTION_PLANNING').style.display = 'block';
         document.getElementById('SECTION_APPLICATION').style.display = 'none';
@@ -1485,7 +1752,7 @@ function autoExpand(t) {
             container.className = 'mois-box';
             container.innerHTML = `<div class="mois-titre">${m}</div>`;
             let fichesMois = db.filter(f => f.mois == i);
-
+            
             if(fichesMois.length === 0) {
                 container.innerHTML += `<p style="text-align:center; color:#94a3b8; font-size:11px; margin:30px 0;">VIDE</p>`;
             } else {
@@ -1502,19 +1769,29 @@ function autoExpand(t) {
                     let clientDiv = document.createElement('div');
                     clientDiv.className = 'client-group';
                     clientDiv.innerHTML = `<div class="client-header">${clientName}</div>`;
+                    
                     Object.keys(hierarchy[clientName]).sort().forEach(chantierName => {
                         let chantierDiv = document.createElement('div');
                         chantierDiv.className = 'chantier-subgroup';
                         chantierDiv.innerHTML = `<div class="chantier-title">${chantierName}</div>`;
+                        
                         hierarchy[clientName][chantierName].forEach(f => {
+                            const estVerrouille = f.verrouillePar && f.verrouillePar !== utilisateurActuel;
                             let ligne = document.createElement('div');
                             ligne.className = 'armoire-ligne';
+                            if (estVerrouille) ligne.style.borderLeft = "4px solid #f39c12";
+
                             ligne.innerHTML = `
                                 <div class="armoire-info" onclick="ouvrirFiche(${f.id})">
-                                    <span class="armoire-label">${f.armoire || 'SANS NOM'}</span>
-                                    <span class="date-label">${new Date(f.id).toLocaleDateString('fr-FR')}</span>
+                                    <span class="armoire-label">
+                                        ${f.armoire || 'SANS NOM'} 
+                                        ${estVerrouille ? `<span style="color:#f39c12; font-size:10px; margin-left:8px;">🔒 ${f.verrouillePar}</span>` : ''}
+                                    </span>
+                                    <span class="date-label">
+                                        ${estVerrouille ? 'Occupé (Cliquer pour débloquer)' : new Date(f.id).toLocaleDateString('fr-FR')}
+                                    </span>
                                 </div>
-                                <button class="btn-suppr" onclick="supprimerFiche(${f.id})">
+                                <button class="btn-suppr" onclick="${estVerrouille ? "alert('Fiche verrouillée')" : `supprimerFiche(${f.id})`}">
                                     <svg viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
                                 </button>`;
                             chantierDiv.appendChild(ligne);
@@ -1528,110 +1805,140 @@ function autoExpand(t) {
         });
     }
 
-    function creerFiche() {
-        const id = Date.now();
-        db.push({ id: id, mois: new Date().getMonth(), client: "", chantier: "", armoire: "", of: "", obs: "", data: {} });
-        saveDB();
-        ouvrirFiche(id);
+    async function ouvrirFiche(id) {
+    let f = db.find(f => f.id === id);
+    if (!f) return;
+
+    if (f.verrouillePar && f.verrouillePar !== utilisateurActuel) {
+        if (!confirm("⚠️ Fiche occupée par : " + f.verrouillePar + ". Forcer l'accès ?")) return;
     }
 
-   function ouvrirFiche(id) {
-    appliquerIdsAutomatiques();
     currentFicheId = id;
-    let f = db.find(f => f.id === id);
-    if (!f) return; 
-
-    document.getElementById('SECTION_PLANNING').style.display = 'none';
-    document.getElementById('SECTION_APPLICATION').style.display = 'block';
+    f.verrouillePar = utilisateurActuel; 
     
-    // --- 1. DISTRIBUTION DU TEXTE (CLIENT, CHANTIER, ARMOIRE) ---
-    // On remplit TOUS les champs qui ont ces classes sur n'importe quelle page
-    document.querySelectorAll('.info-client').forEach(el => el.value = f.client || "");
-    document.querySelectorAll('.info-chantier').forEach(el => el.value = f.chantier || "");
-    document.querySelectorAll('.info-armoire').forEach(el => el.value = f.armoire || "");
+    try {
+        await setDoc(doc(db_cloud, "FICHES", String(id)), f);
+    } catch (e) { console.error("Lock error", e); }
+
+    appliquerIdsAutomatiques();
     
-    // Champs uniques (Identité Page 1)
-    if(document.getElementById('dest_soc')) document.getElementById('dest_soc').value = f.client || "";
-    if(document.getElementById('dest_chan')) document.getElementById('dest_chan').value = f.chantier || "";
-    if(document.getElementById('nom_schema')) document.getElementById('nom_schema').value = f.armoire || "";
-    if(document.getElementById('obs_prealables')) document.getElementById('obs_prealables').value = f.obs || "";
+    // --- GESTION DE L'AFFICHAGE ET DU SCROLL ---
+    const planningSec = document.getElementById('SECTION_PLANNING');
+    const appSec = document.getElementById('SECTION_APPLICATION');
+    
+    planningSec.style.display = 'none';
+    appSec.style.display = 'block';
+    
+    // FORCE LE DÉBLOCAGE DU SCROLL SUR ORDINATEUR
+    document.body.style.overflow = 'auto'; 
+    document.documentElement.style.overflow = 'auto';
+    appSec.style.overflowY = 'auto';
+    window.scrollTo(0, 0);
+    // -------------------------------------------
 
-    // 2. Remplissage des signatures
-    document.getElementById('sig_cableur_nom').value = f.sig_cableur_nom || "";
-    document.getElementById('sig_cableur_date').value = f.sig_cableur_date || "";
-    document.getElementById('sig_verif_nom').value = f.sig_verif_nom || "";
-    document.getElementById('sig_verif_date').value = f.sig_verif_date || "";
+    if (document.getElementById('dest_soc')) document.getElementById('dest_soc').value = f.dest_soc || f.client || "";
+    if (document.getElementById('dest_chan')) document.getElementById('dest_chan').value = f.dest_chan || f.chantier || "";
+    if (document.getElementById('nom_schema')) document.getElementById('nom_schema').value = f.nom_schema || f.armoire || "";
+    
+    const allInputsText = document.querySelectorAll('input:not([type="radio"]):not([type="checkbox"]), textarea');
+    allInputsText.forEach(el => { 
+        if (el.id && f[el.id] !== undefined) el.value = f[el.id]; 
+    });
+    
+    const obsField = document.getElementById('obs_prealables');
+    if (obsField) { 
+        obsField.value = f.obs_prealables || ""; 
+        obsField.style.height = 'auto'; 
+        obsField.style.height = obsField.scrollHeight + 'px'; 
+    }
+    
+    document.querySelectorAll('.tile').forEach(tile => tile.classList.remove('active'));
 
-    // 3. Recharger les canvas
-    loadSignatureToCanvas("canvas_sig_cableur", f.sig_cableur_img);
-    loadSignatureToCanvas("canvas_sig_verif", f.sig_verif_img);
+    const savedType = f.selectedDeviceType || 'armoire';
+    const tuilesType = document.querySelectorAll('.config-group:first-child .tile');
+    tuilesType.forEach(t => {
+        if (t.innerText.trim().toLowerCase() === savedType.toLowerCase()) {
+            t.classList.add('active');
+        }
+    });
+    if (typeof applyDeviceType === "function") applyDeviceType(savedType);
 
-    // --- 4. CHARGEMENT ET RESTAURATION VISUELLE DES TABLEAUX ---
-    const allInputs = document.querySelectorAll('input[type="checkbox"], input[type="radio"]');
-    allInputs.forEach(input => {
+    const savedFuncs = f.activeFunctions || [];
+    const tuilesFunc = document.querySelectorAll('.config-group:last-child .tile');
+    tuilesFunc.forEach(t => {
+        const btnText = t.innerText.trim().toLowerCase();
+        if (savedFuncs.includes(btnText)) {
+            t.classList.add('active');
+        }
+    });
+    
+    document.querySelectorAll('.only-puissance, .only-commande, .only-distribution').forEach(r => r.style.display = 'none');
+    savedFuncs.forEach(func => {
+        document.querySelectorAll('.only-' + func).forEach(r => r.style.display = 'table-row');
+    });
+
+    const allChecks = document.querySelectorAll('input[type="checkbox"], input[type="radio"]');
+    allChecks.forEach(input => {
         if (input.id) {
             input.checked = f[input.id] === true; 
             if (input.checked) {
-                if (input.type === "radio") {
-                    const status = input.id.split('_').pop(); 
-                    updateRow(input, status, true); 
+                if (input.type === "radio" && typeof updateRow === "function") {
+                    updateRow(input, input.id.split('_').pop(), true);
                 }
-                if (input.type === "checkbox" && input.id.startsWith('v_')) {
-                    toggleVerify(input, true); 
+                if (input.type === "checkbox" && input.id.startsWith('v_') && typeof toggleVerify === "function") {
+                    toggleVerify(input, true);
                 }
             }
         }
     });
-
-    // --- 5. CHARGEMENT DES OBSERVATIONS DU TABLEAU ---
-    const allTextareas = document.querySelectorAll('textarea.p3-obs-textarea, textarea.p2-obs-textarea');
-    allTextareas.forEach(txt => {
-        if (txt.id) {
-            txt.value = f[txt.id] || "";
-            if (typeof autoExpand === "function") autoExpand(txt);
-        }
-    });
-
+    
+    loadSignatureToCanvas("canvas_sig_cableur", f.sig_cableur_img);
+    loadSignatureToCanvas("canvas_sig_verif", f.sig_verif_img);
     showTab('page1', document.getElementById('btn-tab1'));
 }
 
-// Fonction utilitaire pour redessiner l'image enregistrée
-function loadSignatureToCanvas(canvasId, dataURL) {
-    const canvas = document.getElementById(canvasId);
-    const ctx = canvas.getContext("2d");
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    if (dataURL && dataURL.length > 100) { // Vérifie que c'est une vraie image
-        const img = new Image();
-        img.onload = function() { ctx.drawImage(img, 0, 0); };
-        img.src = dataURL;
+    /* =========================================
+       5. AUTRES FONCTIONS (TECHNIQUE)
+       ========================================= */
+    function loadSignatureToCanvas(canvasId, dataURL) {
+        const canvas = document.getElementById(canvasId);
+        const ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        if (dataURL && dataURL.length > 100) { const img = new Image(); img.onload = () => ctx.drawImage(img, 0, 0); img.src = dataURL; }
     }
-}
 
-    function retourMenu() {
-    appliquerIdsAutomatiques();
-    let idx = db.findIndex(f => f.id === currentFicheId);
+   async function retourMenu() {
+    console.log("🔙 Sauvegarde globale (Toutes pages + Signatures) et retour...");
     
+    let idx = db.findIndex(f => f.id === currentFicheId);
     if(idx !== -1) {
-        // --- 1. SAUVEGARDE DES INFOS D'IDENTITÉ (Multi-pages) ---
-        // On utilise querySelector pour prendre la première valeur trouvée dans les classes
-        db[idx].client = document.querySelector('.info-client')?.value || "";
-        db[idx].chantier = document.querySelector('.info-chantier')?.value || "";
-        db[idx].armoire = document.querySelector('.info-armoire')?.value || "";
-        
-        // --- 2. SAUVEGARDE DES CHAMPS UNIQUES PAR ID ---
-        // Observations préalables
-        const obsElement = document.getElementById('obs_prealables');
-        if(obsElement) db[idx].obs = obsElement.value;
+        // 1. SYNCHRO DES NOMS POUR LE MENU (Page 1)
+        const valClient = document.getElementById('dest_soc')?.value;
+        const valChantier = document.getElementById('dest_chan')?.value;
+        const valArmoire = document.getElementById('nom_schema')?.value;
 
-        // Signatures (Noms et Dates)
-        db[idx].sig_cableur_nom = document.getElementById('sig_cableur_nom')?.value || "";
-        db[idx].sig_cableur_date = document.getElementById('sig_cableur_date')?.value || "";
-        db[idx].sig_verif_nom = document.getElementById('sig_verif_nom')?.value || "";
-        db[idx].sig_verif_date = document.getElementById('sig_verif_date')?.value || "";
+        db[idx].client = valClient ? valClient.toUpperCase() : (db[idx].client || "SANS CLIENT");
+        db[idx].chantier = valChantier ? valChantier.toUpperCase() : (db[idx].chantier || "SANS CHANTIER");
+        db[idx].armoire = valArmoire ? valArmoire.toUpperCase() : (db[idx].armoire || "SANS NOM");
 
-        // --- 3. TOUS LES INPUTS ET TEXTAREAS DES TABLEAUX ---
-        // On boucle sur tout ce qui a un ID généré automatiquement
-        const allInputs = document.querySelectorAll('input, textarea');
+        // 2. SAUVEGARDE DE TOUS LES BOUTONS (Tuiles active)
+        const tuileTypeActive = document.querySelector('.config-group:first-child .tile.active');
+        if (tuileTypeActive) {
+            db[idx].selectedDeviceType = tuileTypeActive.innerText.trim().toLowerCase();
+        }
+
+        const tuilesFonctionsActives = Array.from(document.querySelectorAll('.config-group:last-child .tile.active'))
+            .map(t => t.innerText.trim().toLowerCase());
+        db[idx].activeFunctions = tuilesFonctionsActives;
+
+        // 3. SAUVEGARDE DES SIGNATURES (L'ajout qui manquait)
+        const canvasCableur = document.getElementById("canvas_sig_cableur");
+        const canvasVerif = document.getElementById("canvas_sig_verif");
+        if (canvasCableur) db[idx].sig_cableur_img = canvasCableur.toDataURL();
+        if (canvasVerif) db[idx].sig_verif_img = canvasVerif.toDataURL();
+
+        // 4. SAUVEGARDE DE TOUS LES INPUTS (TEXTE, CHECKBOX, RADIO) DE TOUTES LES PAGES
+        const allInputs = document.querySelectorAll('input, textarea, select');
         allInputs.forEach(el => {
             if(el.id) {
                 if (el.type === 'checkbox' || el.type === 'radio') {
@@ -1642,268 +1949,312 @@ function loadSignatureToCanvas(canvasId, dataURL) {
             }
         });
 
-        // --- 4. SAUVEGARDE DES DESSINS (CANVAS) ---
-        const canvCableur = document.getElementById('canvas_sig_cableur');
-        const canvVerif = document.getElementById('canvas_sig_verif');
-        if(canvCableur) db[idx].sig_cableur_img = canvCableur.toDataURL();
-        if(canvVerif) db[idx].sig_verif_img = canvVerif.toDataURL();
-
-        // --- 5. ENREGISTREMENT PHYSIQUE DANS LA TABLETTE ---
-        localStorage.setItem('maBaseArmoires', JSON.stringify(db));
-        console.log("Sauvegarde réussie dans localStorage");
+        // 5. LIBÉRATION ET ENVOI CLOUD
+        db[idx].verrouillePar = null; 
+        await saveDB(); 
     }
 
-    // Retour visuel au planning
+    // Retour visuel
     document.getElementById('SECTION_APPLICATION').style.display = 'none';
     document.getElementById('SECTION_PLANNING').style.display = 'block';
-    chargerPlanning(); 
+    
+    currentFicheId = null;
+    
+    if (typeof chargerPlanning === "function") {
+        chargerPlanning();
+    }
+    
+    window.scrollTo(0,0);
 }
 
-    function supprimerFiche(id) {
-        if(confirm("Supprimer cette fiche ?")) {
-            db = db.filter(f => f.id !== id);
-            saveDB();
+async function supprimerFiche(id) {
+    if (confirm("Supprimer définitivement ce chantier ?")) {
+        const index = db.findIndex(f => String(f.id) === String(id));
+        if (index > -1) {
+            db.splice(index, 1);
+            localStorage.setItem('fiches_2026', JSON.stringify(db));
+        }
+        try {
+            await deleteDoc(doc(db_cloud, "FICHES", String(id)));
+        } catch (e) { console.error("Suppr Cloud error", e); }
+        chargerPlanning();
+    }
+}
+
+    function activerEcouteurCloud() {
+    if (!db_cloud) return;
+    onSnapshot(collection(db_cloud, "FICHES"), (snapshot) => {
+        let modifs = false;
+        snapshot.docChanges().forEach((change) => {
+            const data = change.doc.data();
+            const idDoc = String(change.doc.id);
+
+            // --- DÉTECTEUR D'EXPULSION (Pour l'utilisateur A) ---
+            if (idDoc === String(currentFicheId)) {
+                // Si la fiche que j'ai ouverte est maintenant verrouillée par quelqu'un d'autre
+                if (data.verrouillePar && data.verrouillePar !== utilisateurActuel) {
+                    alert("⚠️ Attention ! " + data.verrouillePar + " a forcé l'accès à cette fiche. Vous allez être redirigé au menu.");
+                    currentFicheId = null; // On oublie la fiche pour ne pas écraser les données de l'autre
+                    chargerPlanning(); // Retour au menu
+                    return;
+                }
+            }
+
+            // --- MISE À JOUR DU PLANNING (Pour les autres) ---
+            if (idDoc !== String(currentFicheId)) {
+                const index = db.findIndex(f => String(f.id) === idDoc);
+                if (change.type === "added" || change.type === "modified") {
+                    if (index > -1) db[index] = data; else db.push(data);
+                    modifs = true;
+                } else if (change.type === "removed") {
+                    if (index > -1) db.splice(index, 1);
+                    modifs = true;
+                }
+            }
+        });
+        if (modifs) {
+            localStorage.setItem('fiches_2026', JSON.stringify(db));
             chargerPlanning();
         }
+    });
+}
+
+    // --- FONCTIONS SECONDAIRES (CONSERVÉES) ---
+    function triggerCamera() { document.getElementById('cameraInput').click(); }
+    function handleFiles(files) { /* Ton code handleFiles ici */ }
+    function removePhoto(btn, partial) { /* Ton code removePhoto ici */ }
+    function updatePhotoValidation() { /* Ton code photoValidation ici */ }
+    function updateRow(element, status, isLoading = false) {
+        const row = element.closest('tr');
+        const verifCheckbox = row.querySelector('.p2-td-verif input, .p3-td-verif input');
+        const textarea = row.querySelector('.p2-obs-textarea, .p3-obs-textarea');
+        row.classList.remove('row-so', 'row-nc', 'row-corrected');
+        if(verifCheckbox && !isLoading) verifCheckbox.checked = false;
+        if (status === 'so') row.classList.add('row-so'); 
+        else if (status === 'nc') {
+            row.classList.add('row-nc');
+            if (!isLoading && textarea && !textarea.value.startsWith("Défaut :")) textarea.value = "Défaut : " + textarea.value;
+        }
+        syncToPage1();
     }
+    function toggleVerify(checkbox, isLoading = false) {
+        const row = checkbox.closest('tr');
+        const textarea = row.querySelector('.p2-obs-textarea, .p3-obs-textarea');
+        if (checkbox.checked) {
+            row.classList.remove('row-nc'); row.classList.add('row-corrected');
+            if(textarea) {
+                textarea.style.color = "#15803d"; 
+                if(!isLoading && !textarea.value.includes("(Corrigé")) textarea.value += " (Corrigé le " + new Date().toLocaleDateString() + ")";
+            }
+        } else {
+            row.classList.remove('row-corrected');
+            if (row.querySelector('input[id$="_nc"]')?.checked) row.classList.add('row-nc');
+            if(textarea) textarea.style.color = "";
+        }
+        syncToPage1();
+    }
+    function syncToPage1() {
+        let report = "";
+        const rows = document.querySelectorAll('#control-body tr:not(.p2-category-row):not(#row-photo-preview), #page3 .p3-table tbody tr:not(.p3-category-row)');
+        rows.forEach(row => {
+            const pointCell = row.querySelector('td:first-child');
+            const textarea = row.querySelector('.p2-obs-textarea, .p3-obs-textarea');
+            if ((row.classList.contains('row-nc') || row.classList.contains('row-corrected')) && textarea && textarea.value.trim() !== "") {
+                let pointLabel = pointCell.innerText.replace(/- /g, '').replace(/\n/g, '').trim();
+                report += `• ${pointLabel}: ${textarea.value.trim()}\n`;
+            }
+        });
+        const p1Obs = document.getElementById('obs_prealables');
+        if (p1Obs) { 
+            let currentVal = p1Obs.value;
+            let marker = "\n--- RÉSUMÉ DES DÉFAUTS TECHNIQUES ---";
+            p1Obs.value = currentVal.split(marker)[0] + (report ? marker + "\n" + report : "");
+            p1Obs.style.height = 'auto'; p1Obs.style.height = p1Obs.scrollHeight + 'px'; 
+        }
+    }
+    function selectUnique(element, type) {
+    // 1. Visuel
+    element.parentElement.querySelectorAll('.tile').forEach(t => t.classList.remove('active'));
+    element.classList.add('active');
+    
+    // 2. Application au tableau (Masquage/Affichage)
+    applyDeviceType(type);
 
-    function saveDB() { localStorage.setItem('fiches_2026', JSON.stringify(db)); }
+    // 3. Sauvegarde dans la fiche
+    let idx = db.findIndex(f => f.id === currentFicheId);
+    if(idx !== -1) {
+        db[idx].selectedDeviceType = type; 
+    }
+}
+    function applyDeviceType(type) {
+    document.querySelectorAll('.dynamic-device-name').forEach(span => span.innerText = type);
+    document.querySelectorAll('.only-armoire, .only-coffret, .only-chassis').forEach(r => r.style.display = 'none');
+    document.querySelectorAll('.only-' + type).forEach(r => r.style.display = 'table-row');
+}
 
+function applyFunctionsDirect(activeMultis) {
+    document.querySelectorAll('.only-puissance, .only-commande, .only-distribution').forEach(r => r.style.display = 'none');
+    if (activeMultis) {
+        activeMultis.forEach(f => { 
+            document.querySelectorAll('.only-' + f).forEach(r => r.style.display = 'table-row'); 
+        });
+    }
+}
+    function selectMulti(element, fonction) {
+    // 1. Visuel
+    element.classList.toggle('active');
+    
+    // 2. Récupération des choix
+    const activeMultis = [];
+    element.parentElement.querySelectorAll('.tile.active').forEach(tile => {
+        const txt = tile.getAttribute('onclick');
+        if(txt && txt.includes('selectMulti')) {
+            const m = txt.match(/'([^']+)'/);
+            if(m) activeMultis.push(m[1]);
+        }
+    });
+
+    // 3. Application au tableau
+    applyFunctionsDirect(activeMultis);
+
+    // 4. Sauvegarde dans la fiche
+    let idx = db.findIndex(f => f.id === currentFicheId);
+    if(idx !== -1) {
+        db[idx].activeFunctions = activeMultis;
+    }
+}
+    function applyFunctions() {
+        document.querySelectorAll('.only-puissance, .only-commande, .only-distribution').forEach(r => r.style.display = 'none');
+        const activeMultis = JSON.parse(localStorage.getItem('activeFunctions') || '[]');
+        activeMultis.forEach(f => { document.querySelectorAll('.only-' + f).forEach(r => r.style.display = 'table-row'); });
+    }
     function showTab(tabId, btn) {
         document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
         document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        document.getElementById(tabId).classList.add('active');
-        btn.classList.add('active');
+        if (document.getElementById(tabId)) document.getElementById(tabId).classList.add('active');
+        if (btn) btn.classList.add('active');
     }
+    function initSignatureCanvas(canvasId) {
+        const canvas = document.getElementById(canvasId);
+        if(!canvas) return;
+        const ctx = canvas.getContext("2d");
+        let drawing = false;
+        ctx.strokeStyle = "#0f172a"; ctx.lineWidth = 2; ctx.lineCap = "round";
+        const getPos = (e) => { const rect = canvas.getBoundingClientRect(); return { x: (e.touches ? e.touches[0].clientX : e.clientX) - rect.left, y: (e.touches ? e.touches[0].clientY : e.clientY) - rect.top }; };
+        canvas.addEventListener("mousedown", (e) => { drawing = true; const pos = getPos(e); ctx.beginPath(); ctx.moveTo(pos.x, pos.y); });
+        window.addEventListener("mousemove", (e) => { if (drawing) { const pos = getPos(e); ctx.lineTo(pos.x, pos.y); ctx.stroke(); } });
+        window.addEventListener("mouseup", () => drawing = false);
+        canvas.addEventListener("touchstart", (e) => { e.preventDefault(); drawing = true; const pos = getPos(e); ctx.beginPath(); ctx.moveTo(pos.x, pos.y); }, {passive:false});
+        canvas.addEventListener("touchmove", (e) => { e.preventDefault(); if (drawing) { const pos = getPos(e); ctx.lineTo(pos.x, pos.y); ctx.stroke(); } }, {passive:false});
+    }
+    function clearSignature(canvasId) {
+        const canvas = document.getElementById(canvasId);
+        canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
+        let idx = db.findIndex(f => f.id === currentFicheId);
+        if(idx !== -1) { if(canvasId === "canvas_sig_cableur") db[idx].sig_cableur_img = ""; else db[idx].sig_verif_img = ""; }
+    }
+    function genererPDF() {
+    console.log("🖨️ Préparation du dossier PDF...");
+    
+    // 1. Sauvegarde des signatures avant impression
+    let idx = db.findIndex(f => f.id === currentFicheId);
+    if (idx !== -1) {
+        const c1 = document.getElementById('canvas_sig_cableur');
+        const c2 = document.getElementById('canvas_sig_verif');
+        if(c1) db[idx].sig_cableur_img = c1.toDataURL();
+        if(c2) db[idx].sig_verif_img = c2.toDataURL();
+        saveDB();
+    }
+
+    // 2. Préparation des éléments pour le moteur d'impression
+    document.querySelectorAll('input[type="text"], textarea').forEach(el => { 
+        el.setAttribute('value', el.value); 
+        if(el.tagName === 'TEXTAREA') {
+            el.innerHTML = el.value;
+            // Force la hauteur pour éviter le scroll interne dans le PDF
+            el.style.height = 'auto';
+            el.style.height = el.scrollHeight + 'px';
+        }
+    });
+
+    document.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(el => { 
+        if (el.checked) el.setAttribute('checked', 'checked'); 
+        else el.removeAttribute('checked'); 
+    });
+
+    // 3. Affichage de TOUTES les pages (1, 2 et 3) pour l'impression
+    // On cible bien les conteneurs de tes pages
+    const toutesLesPages = document.querySelectorAll('.page-content, .page-fiche');
+    toutesLesPages.forEach(p => {
+        p.style.display = 'block';
+        p.style.opacity = '1';
+    });
+
+    // 4. Lancement de l'impression
+    setTimeout(() => { 
+        window.print(); 
+        
+        // 5. Après impression : on remet l'affichage par onglets
+        setTimeout(() => { 
+            showTab('page1', document.getElementById('btn-tab1')); 
+            // On remet les hauteurs textarea normales si besoin ici
+        }, 500); 
+    }, 500);
+}
+    function appliquerIdsAutomatiques() {
+        document.querySelectorAll('tr').forEach(row => {
+            const radios = row.querySelectorAll('input[type="radio"]');
+            if (radios.length === 3) {
+                const g = radios[0].getAttribute('name');
+                if (g) {
+                    radios[0].id = `r_${g}_c`; radios[1].id = `r_${g}_nc`; radios[2].id = `r_${g}_so`;
+                    row.id = `row_${g}`;
+                    const txt = row.querySelector('textarea'); if (txt) txt.id = `obs_${g}`;
+                    const vchk = row.querySelector('input[type="checkbox"]'); if (vchk) vchk.id = `v_${g}`;
+                }
+            }
+        });
+    }
+	window.changerUtilisateur = function() {
+    const nouveauNom = prompt("Entrez le nouveau nom d'utilisateur :", utilisateurActuel);
+    if (nouveauNom && nouveauNom.trim() !== "") {
+        localStorage.setItem('nom_utilisateur', nouveauNom.trim());
+        location.reload(); // On rafraîchit la page pour appliquer le changement
+    }
+};
 
     /* =========================================
-       5. INITIALISATION (ONLOAD)
+       6. LE PONT (WINDOW) & INITIALISATION
        ========================================= */
+    window.creerFiche = creerFiche;
+    window.ouvrirFiche = ouvrirFiche;
+    window.supprimerFiche = supprimerFiche;
+    window.retourMenu = retourMenu;
+    window.saveDB = saveDB;
+    window.selectUnique = selectUnique;
+    window.selectMulti = selectMulti;
+    window.updateRow = updateRow;
+    window.toggleVerify = toggleVerify;
+    window.triggerCamera = triggerCamera;
+    window.handleFiles = handleFiles;
+    window.removePhoto = removePhoto;
+    window.showTab = showTab;
+    window.genererPDF = genererPDF;
+    window.clearSignature = clearSignature;
+    window.chargerPlanning = chargerPlanning;
+    window.applyDeviceType = applyDeviceType;
+    window.applyFunctions = applyFunctions;
+
     window.onload = function() {
-        // 1. Charge le planning
         chargerPlanning();
-
-        // 2. Restaure les boutons de configuration (même si cachés au début)
+        initSignatureCanvas("canvas_sig_cableur");
+        initSignatureCanvas("canvas_sig_verif");
         const savedType = localStorage.getItem('selectedDeviceType');
-        if (savedType) {
-            const btn = document.querySelector(`[onclick*="selectUnique"][onclick*="'${savedType}'"]`);
-            if (btn) btn.classList.add('active');
-            applyDeviceType(savedType);
-        }
-
-        const savedFunctions = JSON.parse(localStorage.getItem('activeFunctions') || '[]');
-        savedFunctions.forEach(f => {
-            const btn = document.querySelector(`[onclick*="selectMulti"][onclick*="'${f}'"]`);
-            if (btn) btn.classList.add('active');
-        });
+        if (savedType) applyDeviceType(savedType);
         applyFunctions();
+        updateOnlineStatus();
+        setTimeout(activerEcouteurCloud, 500);
     };
-	
-	document.addEventListener("DOMContentLoaded", function() {
-    initSignatureCanvas("canvas_sig_cableur");
-    initSignatureCanvas("canvas_sig_verif");
-    
-    // Charger les signatures existantes après un court délai 
-    // pour s'assurer que les canvas sont prêts
-    setTimeout(() => {
-        loadSignature("canvas_sig_cableur");
-        loadSignature("canvas_sig_verif");
-    }, 100);
-});
-
-function initSignatureCanvas(canvasId) {
-    const canvas = document.getElementById(canvasId);
-    const ctx = canvas.getContext("2d");
-    let drawing = false;
-
-    ctx.strokeStyle = "#0f172a";
-    ctx.lineWidth = 2;
-    ctx.lineCap = "round";
-
-    // Gestion du dessin (identique à la version précédente)
-    function getPos(e) {
-        const rect = canvas.getBoundingClientRect();
-        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-        return { x: clientX - rect.left, y: clientY - rect.top };
-    }
-
-    const start = (e) => { drawing = true; const pos = getPos(e); ctx.beginPath(); ctx.moveTo(pos.x, pos.y); };
-    const move = (e) => { if (!drawing) return; const pos = getPos(e); ctx.lineTo(pos.x, pos.y); ctx.stroke(); };
-    const stop = () => { 
-        if (drawing) { 
-            drawing = false; 
-            saveSignature(canvasId); // Sauvegarde à chaque levée de doigt/souris
-        } 
-    };
-
-    canvas.addEventListener("mousedown", start);
-    window.addEventListener("mousemove", move);
-    window.addEventListener("mouseup", stop);
-    canvas.addEventListener("touchstart", (e) => { e.preventDefault(); start(e); }, { passive: false });
-    canvas.addEventListener("touchmove", (e) => { e.preventDefault(); move(e); }, { passive: false });
-    canvas.addEventListener("touchend", stop);
-}
-
-// SAUVEGARDE : Convertit le dessin en texte et le stocke
-function saveSignature(canvasId) {
-    // Cette fonction peut rester vide ou servir à mettre un indicateur "Modifié"
-    // La vraie sauvegarde se fait maintenant dans retourMenu()
-}
-
-// CHARGEMENT : Récupère le texte et le redessine sur le canvas
-function loadSignature(canvasId) {
-    const canvas = document.getElementById(canvasId);
-    const ctx = canvas.getContext("2d");
-    const dataURL = localStorage.getItem('saved_sig_' + canvasId);
-    
-    if (dataURL) {
-        const img = new Image();
-        img.onload = function() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(img, 0, 0);
-        };
-        img.src = dataURL;
-    }
-}
-
-// EFFACER : Vide le canvas et supprime la sauvegarde
-function clearSignature(canvasId) {
-    const canvas = document.getElementById(canvasId);
-    const ctx = canvas.getContext("2d");
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
-    let idx = db.findIndex(f => f.id === currentFicheId);
-    if(idx !== -1) {
-        if(canvasId === "canvas_sig_cableur") db[idx].sig_cableur_img = "";
-        else db[idx].sig_verif_img = "";
-    }
-}
-
-function genererPDF() {
-    // 1. Sauvegarde de sécurité
-    let idx = db.findIndex(f => f.id === currentFicheId);
-    if (idx !== -1) {
-        db[idx].sig_cableur_img = document.getElementById('canvas_sig_cableur').toDataURL();
-        db[idx].sig_verif_img = document.getElementById('canvas_sig_verif').toDataURL();
-        saveDB();
-    }
-
-    // 2. Préparation pour l'impression (figer les valeurs)
-    document.querySelectorAll('input[type="text"], input[type="date"], textarea').forEach(el => {
-        if (el.tagName === 'TEXTAREA') el.innerHTML = el.value;
-        el.setAttribute('value', el.value);
-    });
-
-    document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-        if (cb.checked) cb.setAttribute('checked', 'checked');
-        else cb.removeAttribute('checked');
-    });
-
-    // 3. Affichage de toutes les pages
-    const pages = document.querySelectorAll('.page-content');
-    pages.forEach(p => p.style.display = 'block');
-
-    // 4. Lancement de l'impression native
-    setTimeout(() => {
-        window.print();
-
-        // 5. Retour à la normale sans demande de purge
-        setTimeout(() => {
-            showTab('page3', document.getElementById('btn-tab3')); // On reste sur les signatures
-            alert("Rapport PDF prêt !");
-        }, 500);
-    }, 200);
-}
-
-function purgerPhotosApresPDF() {
-    let idx = db.findIndex(f => f.id === currentFicheId);
-    if (idx !== -1) {
-        db[idx].photos = []; // Vide les photos dans la base
-        saveDB();
-        
-        // Vide la galerie visuelle
-        photoGallery = [];
-        const container = document.getElementById('photo-preview-container');
-        if (container) container.innerHTML = '<span style="color: #15803d; font-size: 10px; font-style: italic;">Photos purgées (Espace libéré).</span>';
-        
-        updatePhotoValidation();
-        alert("Espace mémoire libéré.");
-    }
-}
-
-function appliquerIdsAutomatiques() {
-    const rows = document.querySelectorAll('tr');
-    rows.forEach(row => {
-        const radios = row.querySelectorAll('input[type="radio"]');
-        if (radios.length === 3) {
-            const groupe = radios[0].getAttribute('name');
-            radios[0].id = "r_" + groupe + "_c";
-            radios[1].id = "r_" + groupe + "_nc";
-            radios[2].id = "r_" + groupe + "_so";
-            
-            // On donne un ID à la cellule (TD) pour pouvoir la colorer
-            row.id = "row_" + groupe; 
-        }
-        const txt = row.querySelector('textarea');
-        if (txt) {
-            const groupe = row.querySelector('input[type="radio"]')?.getAttribute('name');
-            txt.id = "obs_" + groupe;
-        }
-        const vchk = row.querySelector('input[type="checkbox"]');
-        if (vchk) {
-            const groupe = row.querySelector('input[type="radio"]')?.getAttribute('name');
-            vchk.id = "v_" + groupe;
-        }
-    });
-}
-// Cette fonction lie les champs qui portent le même nom sur différentes pages
-function syncInfos() {
-    const clients = document.querySelectorAll('.input-client'); // Ajoute cette classe à tes inputs
-    const chantiers = document.querySelectorAll('.input-chantier');
-    
-    // Si tu changes le client sur la page 1, ça le change sur la page 3
-    clients.forEach(el => el.oninput = (e) => {
-        clients.forEach(input => input.value = e.target.value);
-    });
-}
-
-function sauvegarderVersDrive() {
-    const dataStr = JSON.stringify(db);
-    const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
-    
-    const exportFileDefaultName = 'SAVE_PLANNING_2026.json';
-    
-    let linkElement = document.createElement('a');
-    linkElement.setAttribute('href', dataUri);
-    linkElement.setAttribute('download', exportFileDefaultName);
-    linkElement.click();
-}
-
-function importerDepuisDrive(event) {
-    const file = event.target.files[0];
-    const reader = new FileReader();
-    reader.onload = function(e) {
-        try {
-            const importedDB = JSON.parse(e.target.result);
-            db = importedDB;
-            saveDB(); // Enregistre dans la tablette
-            chargerPlanning(); // Rafraîchit l'affichage
-            alert("Synchronisation Drive réussie !");
-        } catch (err) {
-            alert("Erreur : Le fichier n'est pas valide.");
-        }
-    };
-    reader.readAsText(file);
-}
-
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js').then(reg => {
-            console.log('App prête pour le mode hors-ligne.');
-        });
-    });
-}
 </script>
 </body>
 </html>
