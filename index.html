@@ -1612,41 +1612,48 @@ function loadSignatureToCanvas(canvasId, dataURL) {
     let idx = db.findIndex(f => f.id === currentFicheId);
     
     if(idx !== -1) {
-        // --- SAUVEGARDE DES INFOS REPETEES (CLASSE) ---
-        // On prend la valeur du premier champ client qu'on trouve
-        const clientVal = document.querySelector('.info-client')?.value;
-        const chantierVal = document.querySelector('.info-chantier')?.value;
-        const armoireVal = document.querySelector('.info-armoire')?.value;
-
-        if(clientVal !== undefined) db[idx].client = clientVal;
-        if(chantierVal !== undefined) db[idx].chantier = chantierVal;
-        if(armoireVal !== undefined) db[idx].armoire = armoireVal;
+        // --- 1. SAUVEGARDE DES INFOS D'IDENTITÉ (Multi-pages) ---
+        // On utilise querySelector pour prendre la première valeur trouvée dans les classes
+        db[idx].client = document.querySelector('.info-client')?.value || "";
+        db[idx].chantier = document.querySelector('.info-chantier')?.value || "";
+        db[idx].armoire = document.querySelector('.info-armoire')?.value || "";
         
-        // Observations préalables et signatures (par ID unique)
-        db[idx].obs = document.getElementById('obs_prealables')?.value || "";
-        db[idx].sig_cableur_nom = document.getElementById('sig_cableur_nom').value;
-        db[idx].sig_cableur_date = document.getElementById('sig_cableur_date').value;
-        db[idx].sig_verif_nom = document.getElementById('sig_verif_nom').value;
-        db[idx].sig_verif_date = document.getElementById('sig_verif_date').value;
+        // --- 2. SAUVEGARDE DES CHAMPS UNIQUES PAR ID ---
+        // Observations préalables
+        const obsElement = document.getElementById('obs_prealables');
+        if(obsElement) db[idx].obs = obsElement.value;
 
-        // --- SAUVEGARDE DE TOUT LE RESTE (IDS UNIQUES) ---
-        const allTexts = document.querySelectorAll('input[type="text"], textarea, input[type="date"]');
-        allTexts.forEach(el => {
-            if(el.id) db[idx][el.id] = el.value;
+        // Signatures (Noms et Dates)
+        db[idx].sig_cableur_nom = document.getElementById('sig_cableur_nom')?.value || "";
+        db[idx].sig_cableur_date = document.getElementById('sig_cableur_date')?.value || "";
+        db[idx].sig_verif_nom = document.getElementById('sig_verif_nom')?.value || "";
+        db[idx].sig_verif_date = document.getElementById('sig_verif_date')?.value || "";
+
+        // --- 3. TOUS LES INPUTS ET TEXTAREAS DES TABLEAUX ---
+        // On boucle sur tout ce qui a un ID généré automatiquement
+        const allInputs = document.querySelectorAll('input, textarea');
+        allInputs.forEach(el => {
+            if(el.id) {
+                if (el.type === 'checkbox' || el.type === 'radio') {
+                    db[idx][el.id] = el.checked;
+                } else {
+                    db[idx][el.id] = el.value;
+                }
+            }
         });
 
-        const allChecks = document.querySelectorAll('input[type="radio"], input[type="checkbox"]');
-        allChecks.forEach(el => {
-            if(el.id) db[idx][el.id] = el.checked;
-        });
+        // --- 4. SAUVEGARDE DES DESSINS (CANVAS) ---
+        const canvCableur = document.getElementById('canvas_sig_cableur');
+        const canvVerif = document.getElementById('canvas_sig_verif');
+        if(canvCableur) db[idx].sig_cableur_img = canvCableur.toDataURL();
+        if(canvVerif) db[idx].sig_verif_img = canvVerif.toDataURL();
 
-        // Sauvegarde des signatures (Canvas)
-        db[idx].sig_cableur_img = document.getElementById('canvas_sig_cableur').toDataURL();
-        db[idx].sig_verif_img = document.getElementById('canvas_sig_verif').toDataURL();
-
-        saveDB(); 
+        // --- 5. ENREGISTREMENT PHYSIQUE DANS LA TABLETTE ---
+        localStorage.setItem('maBaseArmoires', JSON.stringify(db));
+        console.log("Sauvegarde réussie dans localStorage");
     }
-    
+
+    // Retour visuel au planning
     document.getElementById('SECTION_APPLICATION').style.display = 'none';
     document.getElementById('SECTION_PLANNING').style.display = 'block';
     chargerPlanning(); 
